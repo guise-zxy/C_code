@@ -1,0 +1,12 @@
+﻿  print.c
+D:\CODE\test_07_02\test_07_02\print.c(7,10): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+      D:\CODE\test_07_02\test_07_02\print.c(7,10):
+      请考虑在格式字符串中使用“%zd”
+  
+D:\CODE\test_07_02\test_07_02\print.c(8,3): error C2146: 语法错误: 缺少“;”(在标识符“printf”的前面)
+D:\CODE\test_07_02\test_07_02\print.c(8,18): error C2065: “llf”: 未声明的标识符
+D:\CODE\test_07_02\test_07_02\print.c(8,18): warning C4474: printf: 格式字符串中传递的参数太多
+      D:\CODE\test_07_02\test_07_02\print.c(8,18):
+      占位符和其参数预计 0 可变参数，但提供的却是 1 参数
+  
+D:\CODE\test_07_02\test_07_02\print.c(12,1): error C2143: 语法错误: 缺少“;”(在“return”的前面)
