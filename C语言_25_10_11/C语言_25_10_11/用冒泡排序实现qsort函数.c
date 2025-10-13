@@ -3,13 +3,23 @@
 
 
 #include <stdio.h>
+				//用“指针”实现 Swap交换
 void Swap(char* p1, char* p2,size_t size)
 {
-	int temp = *(p2 + size);
+	for (int i = 0; i < size; i++)
+	{
+		char temp = *(p2 + i);
+		*(p2 + i) = *(p1 + i);
+		*(p1 + i) = temp; 
+	}
 
 }
 
-void Qsort(void* s, size_t num, size_t size, int(*hs)(const void* p1, const void* p2))
+
+
+
+
+void qsort(void* s, size_t num, size_t size, int(*hs)(const void* p1, const void* p2))
 {
 	//搭建一个实现两两数比较的排序算法，这里用”冒泡排序“实现
 	for (int i = 0; i < num - 1; i++)
@@ -18,7 +28,7 @@ void Qsort(void* s, size_t num, size_t size, int(*hs)(const void* p1, const void
 		{   
 
 
-	//实现一个比较函数cmp
+	//比较函数cmp
 			if (cmp((char *)s+(j*size), (char*)s + (j + 1)*size) > 0)
 			{
 
@@ -29,8 +39,26 @@ void Qsort(void* s, size_t num, size_t size, int(*hs)(const void* p1, const void
 	}
 
 
+}
+
+//实现cmp函数
+int cmp(const void* p1, const void* p2)
+{
+
+	return (*(int*)p2) - (*(int*)p1);
+}
 
 
+int main() {
+	int a[6] = { 4,3,1,2,0,-1 };
+	int sz = sizeof(a) / sizeof(a[0]);
+	qsort(a, sz, sizeof(int), cmp);
+
+	for (int k = 0; k < sz; k++)
+	{
+		printf("%d ", a[k]);
+	}
+	return 0;
 }
 
 

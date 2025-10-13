@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="qsort函数的使用.c">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="用冒泡排序实现qsort函数.c">
       <Filter>源文件</Filter>
     </ClCompile>
