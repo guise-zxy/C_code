@@ -1,0 +1,13 @@
+{
+	"nodes":[
+		{"id":"eff1293ff55dd7c3","type":"text","text":"## 技术层面：","x":-240,"y":-200,"width":900,"height":540},
+		{"id":"9fb76ce564a0e7b8","type":"text","text":"# 耳机","x":-560,"y":-143,"width":112,"height":63},
+		{"id":"80f5db0211ebb3e6","type":"text","text":"## 产品层面：\n![[Pasted image 20260120203125.png]]","x":-240,"y":-880,"width":900,"height":640},
+		{"id":"958a17bd7af9a094","type":"text","text":"# 商业层面：","x":-240,"y":420,"width":900,"height":720}
+	],
+	"edges":[
+		{"id":"dcefd53fc50c56d1","fromNode":"9fb76ce564a0e7b8","fromSide":"right","toNode":"80f5db0211ebb3e6","toSide":"left"},
+		{"id":"2f2a165ed670a9f0","fromNode":"9fb76ce564a0e7b8","fromSide":"right","toNode":"958a17bd7af9a094","toSide":"left"},
+		{"id":"0e5de1ab793dad1d","fromNode":"9fb76ce564a0e7b8","fromSide":"right","toNode":"eff1293ff55dd7c3","toSide":"left"}
+	]
+}
