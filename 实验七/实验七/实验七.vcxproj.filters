@@ -21,5 +21,14 @@
     <ClCompile Include="B题.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="C题.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="D题目.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="E题.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

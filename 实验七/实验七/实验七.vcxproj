@@ -125,6 +125,9 @@
   <ItemGroup>
     <ClCompile Include="A题.cpp" />
     <ClCompile Include="B题.cpp" />
+    <ClCompile Include="C题.cpp" />
+    <ClCompile Include="D题目.cpp" />
+    <ClCompile Include="E题.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
