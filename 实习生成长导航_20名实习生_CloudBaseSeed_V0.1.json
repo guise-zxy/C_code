@@ -1,0 +1,2570 @@
+{
+  "metadata": {
+    "title": "腾讯业务部实习生成长导航 Demo Seed Data",
+    "version": "0.1",
+    "generatedAt": "2026-06-02T10:00:00+08:00",
+    "description": "20 名虚拟实习生数据，用于公网云端 Demo。所有姓名、邮箱和业务内容均为虚构，仅用于产品演示。",
+    "notes": [
+      "研发 9 人、产品 6 人、销售 5 人。",
+      "数据刻意覆盖正常推进、自主排查中、接近沟通阈值、建议主动沟通、等待 Mentor 协助、已解决、长期未更新、合规风险等状态。",
+      "issueClusters 为第一版 Demo 模拟的 AI 聚类结果。",
+      "认证账号需要在 CloudBase 身份认证中单独创建；本文件不包含密码。"
+    ]
+  },
+  "collections": {
+    "users": [
+      {
+        "id": "mentor_01",
+        "name": "李明",
+        "role": "mentor",
+        "department": "研发组",
+        "email": "mentor.li@example.com"
+      },
+      {
+        "id": "mentor_02",
+        "name": "周启",
+        "role": "mentor",
+        "department": "研发组",
+        "email": "mentor.zhou@example.com"
+      },
+      {
+        "id": "mentor_03",
+        "name": "王楠",
+        "role": "mentor",
+        "department": "研发组",
+        "email": "mentor.wang@example.com"
+      },
+      {
+        "id": "mentor_04",
+        "name": "赵露",
+        "role": "mentor",
+        "department": "产品组",
+        "email": "mentor.zhao@example.com"
+      },
+      {
+        "id": "mentor_05",
+        "name": "孙帆",
+        "role": "mentor",
+        "department": "产品组",
+        "email": "mentor.sun@example.com"
+      },
+      {
+        "id": "mentor_06",
+        "name": "陈宇",
+        "role": "mentor",
+        "department": "销售组",
+        "email": "mentor.chen@example.com"
+      },
+      {
+        "id": "mentor_07",
+        "name": "林静",
+        "role": "mentor",
+        "department": "销售组",
+        "email": "mentor.lin@example.com"
+      },
+      {
+        "id": "hr_01",
+        "name": "王同学",
+        "role": "hr",
+        "department": "人力运营",
+        "email": "hr.ops@example.com"
+      },
+      {
+        "id": "intern_01",
+        "name": "陈晨",
+        "role": "intern",
+        "department": "研发组",
+        "position": "后端开发实习生",
+        "mentorId": "mentor_01",
+        "email": "intern01@example.com",
+        "currentWeek": 2,
+        "stage": "第 2 周：基础任务实践",
+        "progressStatus": "attention",
+        "nextMentorSyncAt": "2026-06-04T11:00:00+08:00",
+        "lastProgressAt": "2026-06-02T09:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "intern_02",
+        "name": "刘洋",
+        "role": "intern",
+        "department": "研发组",
+        "position": "后端开发实习生",
+        "mentorId": "mentor_01",
+        "email": "intern02@example.com",
+        "currentWeek": 1,
+        "stage": "第 1 周：环境与流程熟悉",
+        "progressStatus": "normal",
+        "nextMentorSyncAt": "2026-06-05T12:00:00+08:00",
+        "lastProgressAt": "2026-06-02T08:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "intern_03",
+        "name": "张宁",
+        "role": "intern",
+        "department": "研发组",
+        "position": "前端开发实习生",
+        "mentorId": "mentor_02",
+        "email": "intern03@example.com",
+        "currentWeek": 3,
+        "stage": "第 3 周：真实任务参与",
+        "progressStatus": "risk",
+        "nextMentorSyncAt": "2026-06-06T10:00:00+08:00",
+        "lastProgressAt": "2026-06-02T07:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "intern_04",
+        "name": "王可",
+        "role": "intern",
+        "department": "研发组",
+        "position": "测试开发实习生",
+        "mentorId": "mentor_02",
+        "email": "intern04@example.com",
+        "currentWeek": 2,
+        "stage": "第 2 周：基础任务实践",
+        "progressStatus": "normal",
+        "nextMentorSyncAt": "2026-06-03T11:00:00+08:00",
+        "lastProgressAt": "2026-06-02T06:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "intern_05",
+        "name": "赵一凡",
+        "role": "intern",
+        "department": "研发组",
+        "position": "后端开发实习生",
+        "mentorId": "mentor_02",
+        "email": "intern05@example.com",
+        "currentWeek": 4,
+        "stage": "第 4 周：独立交付观察",
+        "progressStatus": "attention",
+        "nextMentorSyncAt": "2026-06-04T12:00:00+08:00",
+        "lastProgressAt": "2026-06-02T10:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "intern_06",
+        "name": "林泽",
+        "role": "intern",
+        "department": "研发组",
+        "position": "测试开发实习生",
+        "mentorId": "mentor_03",
+        "email": "intern06@example.com",
+        "currentWeek": 1,
+        "stage": "第 1 周：环境与流程熟悉",
+        "progressStatus": "stale",
+        "nextMentorSyncAt": "2026-06-05T10:00:00+08:00",
+        "lastProgressAt": "2026-05-30T09:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "intern_07",
+        "name": "周越",
+        "role": "intern",
+        "department": "研发组",
+        "position": "前端开发实习生",
+        "mentorId": "mentor_03",
+        "email": "intern07@example.com",
+        "currentWeek": 3,
+        "stage": "第 3 周：真实任务参与",
+        "progressStatus": "normal",
+        "nextMentorSyncAt": "2026-06-06T11:00:00+08:00",
+        "lastProgressAt": "2026-06-02T08:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "intern_08",
+        "name": "孙浩",
+        "role": "intern",
+        "department": "研发组",
+        "position": "后端开发实习生",
+        "mentorId": "mentor_03",
+        "email": "intern08@example.com",
+        "currentWeek": 2,
+        "stage": "第 2 周：基础任务实践",
+        "progressStatus": "attention",
+        "nextMentorSyncAt": "2026-06-03T12:00:00+08:00",
+        "lastProgressAt": "2026-06-02T07:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "intern_09",
+        "name": "何嘉",
+        "role": "intern",
+        "department": "研发组",
+        "position": "测试开发实习生",
+        "mentorId": "mentor_01",
+        "email": "intern09@example.com",
+        "currentWeek": 4,
+        "stage": "第 4 周：独立交付观察",
+        "progressStatus": "normal",
+        "nextMentorSyncAt": "2026-06-04T10:00:00+08:00",
+        "lastProgressAt": "2026-06-02T06:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "intern_10",
+        "name": "李悦",
+        "role": "intern",
+        "department": "产品组",
+        "position": "产品实习生",
+        "mentorId": "mentor_04",
+        "email": "intern10@example.com",
+        "currentWeek": 1,
+        "stage": "第 1 周：业务与流程熟悉",
+        "progressStatus": "normal",
+        "nextMentorSyncAt": "2026-06-05T11:00:00+08:00",
+        "lastProgressAt": "2026-06-02T10:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "intern_11",
+        "name": "徐欣",
+        "role": "intern",
+        "department": "产品组",
+        "position": "产品实习生",
+        "mentorId": "mentor_04",
+        "email": "intern11@example.com",
+        "currentWeek": 2,
+        "stage": "第 2 周：需求拆解实践",
+        "progressStatus": "attention",
+        "nextMentorSyncAt": "2026-06-06T12:00:00+08:00",
+        "lastProgressAt": "2026-06-02T09:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "intern_12",
+        "name": "陈思远",
+        "role": "intern",
+        "department": "产品组",
+        "position": "产品实习生",
+        "mentorId": "mentor_04",
+        "email": "intern12@example.com",
+        "currentWeek": 3,
+        "stage": "第 3 周：真实项目参与",
+        "progressStatus": "risk",
+        "nextMentorSyncAt": "2026-06-03T10:00:00+08:00",
+        "lastProgressAt": "2026-06-02T08:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "intern_13",
+        "name": "宋雨",
+        "role": "intern",
+        "department": "产品组",
+        "position": "用户研究实习生",
+        "mentorId": "mentor_05",
+        "email": "intern13@example.com",
+        "currentWeek": 2,
+        "stage": "第 2 周：调研任务实践",
+        "progressStatus": "normal",
+        "nextMentorSyncAt": "2026-06-04T11:00:00+08:00",
+        "lastProgressAt": "2026-06-02T07:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "intern_14",
+        "name": "韩雪",
+        "role": "intern",
+        "department": "产品组",
+        "position": "产品运营实习生",
+        "mentorId": "mentor_05",
+        "email": "intern14@example.com",
+        "currentWeek": 4,
+        "stage": "第 4 周：独立交付观察",
+        "progressStatus": "stale",
+        "nextMentorSyncAt": "2026-06-05T12:00:00+08:00",
+        "lastProgressAt": "2026-05-30T06:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "intern_15",
+        "name": "吴桐",
+        "role": "intern",
+        "department": "产品组",
+        "position": "产品运营实习生",
+        "mentorId": "mentor_05",
+        "email": "intern15@example.com",
+        "currentWeek": 1,
+        "stage": "第 1 周：业务与流程熟悉",
+        "progressStatus": "normal",
+        "nextMentorSyncAt": "2026-06-06T10:00:00+08:00",
+        "lastProgressAt": "2026-06-02T10:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "intern_16",
+        "name": "高远",
+        "role": "intern",
+        "department": "销售组",
+        "position": "销售实习生",
+        "mentorId": "mentor_06",
+        "email": "intern16@example.com",
+        "currentWeek": 1,
+        "stage": "第 1 周：产品与工具熟悉",
+        "progressStatus": "attention",
+        "nextMentorSyncAt": "2026-06-03T11:00:00+08:00",
+        "lastProgressAt": "2026-06-02T09:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "intern_17",
+        "name": "郑妍",
+        "role": "intern",
+        "department": "销售组",
+        "position": "销售实习生",
+        "mentorId": "mentor_06",
+        "email": "intern17@example.com",
+        "currentWeek": 2,
+        "stage": "第 2 周：客户沟通实践",
+        "progressStatus": "normal",
+        "nextMentorSyncAt": "2026-06-04T12:00:00+08:00",
+        "lastProgressAt": "2026-06-02T08:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "intern_18",
+        "name": "马骁",
+        "role": "intern",
+        "department": "销售组",
+        "position": "销售支持实习生",
+        "mentorId": "mentor_07",
+        "email": "intern18@example.com",
+        "currentWeek": 3,
+        "stage": "第 3 周：客户协同实践",
+        "progressStatus": "risk",
+        "nextMentorSyncAt": "2026-06-05T10:00:00+08:00",
+        "lastProgressAt": "2026-06-02T07:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "intern_19",
+        "name": "唐婧",
+        "role": "intern",
+        "department": "销售组",
+        "position": "销售实习生",
+        "mentorId": "mentor_07",
+        "email": "intern19@example.com",
+        "currentWeek": 2,
+        "stage": "第 2 周：客户沟通实践",
+        "progressStatus": "attention",
+        "nextMentorSyncAt": "2026-06-06T11:00:00+08:00",
+        "lastProgressAt": "2026-06-02T06:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "intern_20",
+        "name": "许晨",
+        "role": "intern",
+        "department": "销售组",
+        "position": "销售支持实习生",
+        "mentorId": "mentor_07",
+        "email": "intern20@example.com",
+        "currentWeek": 4,
+        "stage": "第 4 周：独立交付观察",
+        "progressStatus": "normal",
+        "nextMentorSyncAt": "2026-06-03T12:00:00+08:00",
+        "lastProgressAt": "2026-06-02T10:00:00+08:00",
+        "isDemoData": true
+      }
+    ],
+    "interns": [
+      {
+        "id": "intern_01",
+        "name": "陈晨",
+        "role": "intern",
+        "department": "研发组",
+        "position": "后端开发实习生",
+        "mentorId": "mentor_01",
+        "email": "intern01@example.com",
+        "currentWeek": 2,
+        "stage": "第 2 周：基础任务实践",
+        "progressStatus": "attention",
+        "nextMentorSyncAt": "2026-06-04T11:00:00+08:00",
+        "lastProgressAt": "2026-06-02T09:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "intern_02",
+        "name": "刘洋",
+        "role": "intern",
+        "department": "研发组",
+        "position": "后端开发实习生",
+        "mentorId": "mentor_01",
+        "email": "intern02@example.com",
+        "currentWeek": 1,
+        "stage": "第 1 周：环境与流程熟悉",
+        "progressStatus": "normal",
+        "nextMentorSyncAt": "2026-06-05T12:00:00+08:00",
+        "lastProgressAt": "2026-06-02T08:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "intern_03",
+        "name": "张宁",
+        "role": "intern",
+        "department": "研发组",
+        "position": "前端开发实习生",
+        "mentorId": "mentor_02",
+        "email": "intern03@example.com",
+        "currentWeek": 3,
+        "stage": "第 3 周：真实任务参与",
+        "progressStatus": "risk",
+        "nextMentorSyncAt": "2026-06-06T10:00:00+08:00",
+        "lastProgressAt": "2026-06-02T07:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "intern_04",
+        "name": "王可",
+        "role": "intern",
+        "department": "研发组",
+        "position": "测试开发实习生",
+        "mentorId": "mentor_02",
+        "email": "intern04@example.com",
+        "currentWeek": 2,
+        "stage": "第 2 周：基础任务实践",
+        "progressStatus": "normal",
+        "nextMentorSyncAt": "2026-06-03T11:00:00+08:00",
+        "lastProgressAt": "2026-06-02T06:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "intern_05",
+        "name": "赵一凡",
+        "role": "intern",
+        "department": "研发组",
+        "position": "后端开发实习生",
+        "mentorId": "mentor_02",
+        "email": "intern05@example.com",
+        "currentWeek": 4,
+        "stage": "第 4 周：独立交付观察",
+        "progressStatus": "attention",
+        "nextMentorSyncAt": "2026-06-04T12:00:00+08:00",
+        "lastProgressAt": "2026-06-02T10:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "intern_06",
+        "name": "林泽",
+        "role": "intern",
+        "department": "研发组",
+        "position": "测试开发实习生",
+        "mentorId": "mentor_03",
+        "email": "intern06@example.com",
+        "currentWeek": 1,
+        "stage": "第 1 周：环境与流程熟悉",
+        "progressStatus": "stale",
+        "nextMentorSyncAt": "2026-06-05T10:00:00+08:00",
+        "lastProgressAt": "2026-05-30T09:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "intern_07",
+        "name": "周越",
+        "role": "intern",
+        "department": "研发组",
+        "position": "前端开发实习生",
+        "mentorId": "mentor_03",
+        "email": "intern07@example.com",
+        "currentWeek": 3,
+        "stage": "第 3 周：真实任务参与",
+        "progressStatus": "normal",
+        "nextMentorSyncAt": "2026-06-06T11:00:00+08:00",
+        "lastProgressAt": "2026-06-02T08:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "intern_08",
+        "name": "孙浩",
+        "role": "intern",
+        "department": "研发组",
+        "position": "后端开发实习生",
+        "mentorId": "mentor_03",
+        "email": "intern08@example.com",
+        "currentWeek": 2,
+        "stage": "第 2 周：基础任务实践",
+        "progressStatus": "attention",
+        "nextMentorSyncAt": "2026-06-03T12:00:00+08:00",
+        "lastProgressAt": "2026-06-02T07:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "intern_09",
+        "name": "何嘉",
+        "role": "intern",
+        "department": "研发组",
+        "position": "测试开发实习生",
+        "mentorId": "mentor_01",
+        "email": "intern09@example.com",
+        "currentWeek": 4,
+        "stage": "第 4 周：独立交付观察",
+        "progressStatus": "normal",
+        "nextMentorSyncAt": "2026-06-04T10:00:00+08:00",
+        "lastProgressAt": "2026-06-02T06:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "intern_10",
+        "name": "李悦",
+        "role": "intern",
+        "department": "产品组",
+        "position": "产品实习生",
+        "mentorId": "mentor_04",
+        "email": "intern10@example.com",
+        "currentWeek": 1,
+        "stage": "第 1 周：业务与流程熟悉",
+        "progressStatus": "normal",
+        "nextMentorSyncAt": "2026-06-05T11:00:00+08:00",
+        "lastProgressAt": "2026-06-02T10:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "intern_11",
+        "name": "徐欣",
+        "role": "intern",
+        "department": "产品组",
+        "position": "产品实习生",
+        "mentorId": "mentor_04",
+        "email": "intern11@example.com",
+        "currentWeek": 2,
+        "stage": "第 2 周：需求拆解实践",
+        "progressStatus": "attention",
+        "nextMentorSyncAt": "2026-06-06T12:00:00+08:00",
+        "lastProgressAt": "2026-06-02T09:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "intern_12",
+        "name": "陈思远",
+        "role": "intern",
+        "department": "产品组",
+        "position": "产品实习生",
+        "mentorId": "mentor_04",
+        "email": "intern12@example.com",
+        "currentWeek": 3,
+        "stage": "第 3 周：真实项目参与",
+        "progressStatus": "risk",
+        "nextMentorSyncAt": "2026-06-03T10:00:00+08:00",
+        "lastProgressAt": "2026-06-02T08:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "intern_13",
+        "name": "宋雨",
+        "role": "intern",
+        "department": "产品组",
+        "position": "用户研究实习生",
+        "mentorId": "mentor_05",
+        "email": "intern13@example.com",
+        "currentWeek": 2,
+        "stage": "第 2 周：调研任务实践",
+        "progressStatus": "normal",
+        "nextMentorSyncAt": "2026-06-04T11:00:00+08:00",
+        "lastProgressAt": "2026-06-02T07:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "intern_14",
+        "name": "韩雪",
+        "role": "intern",
+        "department": "产品组",
+        "position": "产品运营实习生",
+        "mentorId": "mentor_05",
+        "email": "intern14@example.com",
+        "currentWeek": 4,
+        "stage": "第 4 周：独立交付观察",
+        "progressStatus": "stale",
+        "nextMentorSyncAt": "2026-06-05T12:00:00+08:00",
+        "lastProgressAt": "2026-05-30T06:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "intern_15",
+        "name": "吴桐",
+        "role": "intern",
+        "department": "产品组",
+        "position": "产品运营实习生",
+        "mentorId": "mentor_05",
+        "email": "intern15@example.com",
+        "currentWeek": 1,
+        "stage": "第 1 周：业务与流程熟悉",
+        "progressStatus": "normal",
+        "nextMentorSyncAt": "2026-06-06T10:00:00+08:00",
+        "lastProgressAt": "2026-06-02T10:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "intern_16",
+        "name": "高远",
+        "role": "intern",
+        "department": "销售组",
+        "position": "销售实习生",
+        "mentorId": "mentor_06",
+        "email": "intern16@example.com",
+        "currentWeek": 1,
+        "stage": "第 1 周：产品与工具熟悉",
+        "progressStatus": "attention",
+        "nextMentorSyncAt": "2026-06-03T11:00:00+08:00",
+        "lastProgressAt": "2026-06-02T09:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "intern_17",
+        "name": "郑妍",
+        "role": "intern",
+        "department": "销售组",
+        "position": "销售实习生",
+        "mentorId": "mentor_06",
+        "email": "intern17@example.com",
+        "currentWeek": 2,
+        "stage": "第 2 周：客户沟通实践",
+        "progressStatus": "normal",
+        "nextMentorSyncAt": "2026-06-04T12:00:00+08:00",
+        "lastProgressAt": "2026-06-02T08:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "intern_18",
+        "name": "马骁",
+        "role": "intern",
+        "department": "销售组",
+        "position": "销售支持实习生",
+        "mentorId": "mentor_07",
+        "email": "intern18@example.com",
+        "currentWeek": 3,
+        "stage": "第 3 周：客户协同实践",
+        "progressStatus": "risk",
+        "nextMentorSyncAt": "2026-06-05T10:00:00+08:00",
+        "lastProgressAt": "2026-06-02T07:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "intern_19",
+        "name": "唐婧",
+        "role": "intern",
+        "department": "销售组",
+        "position": "销售实习生",
+        "mentorId": "mentor_07",
+        "email": "intern19@example.com",
+        "currentWeek": 2,
+        "stage": "第 2 周：客户沟通实践",
+        "progressStatus": "attention",
+        "nextMentorSyncAt": "2026-06-06T11:00:00+08:00",
+        "lastProgressAt": "2026-06-02T06:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "intern_20",
+        "name": "许晨",
+        "role": "intern",
+        "department": "销售组",
+        "position": "销售支持实习生",
+        "mentorId": "mentor_07",
+        "email": "intern20@example.com",
+        "currentWeek": 4,
+        "stage": "第 4 周：独立交付观察",
+        "progressStatus": "normal",
+        "nextMentorSyncAt": "2026-06-03T12:00:00+08:00",
+        "lastProgressAt": "2026-06-02T10:00:00+08:00",
+        "isDemoData": true
+      }
+    ],
+    "mentors": [
+      {
+        "id": "mentor_01",
+        "name": "李明",
+        "role": "mentor",
+        "department": "研发组",
+        "email": "mentor.li@example.com"
+      },
+      {
+        "id": "mentor_02",
+        "name": "周启",
+        "role": "mentor",
+        "department": "研发组",
+        "email": "mentor.zhou@example.com"
+      },
+      {
+        "id": "mentor_03",
+        "name": "王楠",
+        "role": "mentor",
+        "department": "研发组",
+        "email": "mentor.wang@example.com"
+      },
+      {
+        "id": "mentor_04",
+        "name": "赵露",
+        "role": "mentor",
+        "department": "产品组",
+        "email": "mentor.zhao@example.com"
+      },
+      {
+        "id": "mentor_05",
+        "name": "孙帆",
+        "role": "mentor",
+        "department": "产品组",
+        "email": "mentor.sun@example.com"
+      },
+      {
+        "id": "mentor_06",
+        "name": "陈宇",
+        "role": "mentor",
+        "department": "销售组",
+        "email": "mentor.chen@example.com"
+      },
+      {
+        "id": "mentor_07",
+        "name": "林静",
+        "role": "mentor",
+        "department": "销售组",
+        "email": "mentor.lin@example.com"
+      }
+    ],
+    "hr_ops": [
+      {
+        "id": "hr_01",
+        "name": "王同学",
+        "role": "hr",
+        "department": "人力运营",
+        "email": "hr.ops@example.com"
+      }
+    ],
+    "tasks": [
+      {
+        "id": "task_01_1",
+        "internId": "intern_01",
+        "title": "完成本地开发环境配置",
+        "description": "后端开发实习生第 2 周培养任务",
+        "completionCriteria": "项目可正常启动，依赖和数据库连接配置完成",
+        "dueDate": "2026-06-07T10:00:00+08:00",
+        "status": "in_progress",
+        "stage": "第 2 周：基础任务实践",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T08:00:00+08:00"
+      },
+      {
+        "id": "task_01_2",
+        "internId": "intern_01",
+        "title": "熟悉服务模块与接口文档",
+        "description": "后端开发实习生第 2 周培养任务",
+        "completionCriteria": "能够说明当前负责模块的输入、输出和依赖关系",
+        "dueDate": "2026-06-08T10:00:00+08:00",
+        "status": "in_progress",
+        "stage": "第 2 周：基础任务实践",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T07:00:00+08:00"
+      },
+      {
+        "id": "task_01_3",
+        "internId": "intern_01",
+        "title": "完成一个低风险接口优化任务",
+        "description": "后端开发实习生第 2 周培养任务",
+        "completionCriteria": "提交代码、测试记录和简短复盘",
+        "dueDate": "2026-06-09T10:00:00+08:00",
+        "status": "todo",
+        "stage": "第 2 周：基础任务实践",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T06:00:00+08:00"
+      },
+      {
+        "id": "task_02_1",
+        "internId": "intern_02",
+        "title": "完成本地开发环境配置",
+        "description": "后端开发实习生第 1 周培养任务",
+        "completionCriteria": "项目可正常启动，依赖和数据库连接配置完成",
+        "dueDate": "2026-06-07T10:00:00+08:00",
+        "status": "in_progress",
+        "stage": "第 1 周：环境与流程熟悉",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T07:00:00+08:00"
+      },
+      {
+        "id": "task_02_2",
+        "internId": "intern_02",
+        "title": "熟悉服务模块与接口文档",
+        "description": "后端开发实习生第 1 周培养任务",
+        "completionCriteria": "能够说明当前负责模块的输入、输出和依赖关系",
+        "dueDate": "2026-06-08T10:00:00+08:00",
+        "status": "todo",
+        "stage": "第 1 周：环境与流程熟悉",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T06:00:00+08:00"
+      },
+      {
+        "id": "task_02_3",
+        "internId": "intern_02",
+        "title": "完成一个低风险接口优化任务",
+        "description": "后端开发实习生第 1 周培养任务",
+        "completionCriteria": "提交代码、测试记录和简短复盘",
+        "dueDate": "2026-06-09T10:00:00+08:00",
+        "status": "todo",
+        "stage": "第 1 周：环境与流程熟悉",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T05:00:00+08:00"
+      },
+      {
+        "id": "task_03_1",
+        "internId": "intern_03",
+        "title": "完成前端项目环境配置",
+        "description": "前端开发实习生第 3 周培养任务",
+        "completionCriteria": "项目可本地运行并完成一次基础构建",
+        "dueDate": "2026-06-07T10:00:00+08:00",
+        "status": "done",
+        "stage": "第 3 周：真实任务参与",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T06:00:00+08:00"
+      },
+      {
+        "id": "task_03_2",
+        "internId": "intern_03",
+        "title": "熟悉组件目录与接口联调流程",
+        "description": "前端开发实习生第 3 周培养任务",
+        "completionCriteria": "能够定位页面入口和主要接口",
+        "dueDate": "2026-06-08T10:00:00+08:00",
+        "status": "done",
+        "stage": "第 3 周：真实任务参与",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T05:00:00+08:00"
+      },
+      {
+        "id": "task_03_3",
+        "internId": "intern_03",
+        "title": "完成一个低风险页面优化",
+        "description": "前端开发实习生第 3 周培养任务",
+        "completionCriteria": "提交代码、截图和测试说明",
+        "dueDate": "2026-06-09T10:00:00+08:00",
+        "status": "in_progress",
+        "stage": "第 3 周：真实任务参与",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T10:00:00+08:00"
+      },
+      {
+        "id": "task_04_1",
+        "internId": "intern_04",
+        "title": "熟悉测试环境与常用工具",
+        "description": "测试开发实习生第 2 周培养任务",
+        "completionCriteria": "完成环境验证并提交配置记录",
+        "dueDate": "2026-06-07T10:00:00+08:00",
+        "status": "done",
+        "stage": "第 2 周：基础任务实践",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T05:00:00+08:00"
+      },
+      {
+        "id": "task_04_2",
+        "internId": "intern_04",
+        "title": "阅读测试用例与缺陷流程",
+        "description": "测试开发实习生第 2 周培养任务",
+        "completionCriteria": "能够独立创建一条规范缺陷记录",
+        "dueDate": "2026-06-08T10:00:00+08:00",
+        "status": "in_progress",
+        "stage": "第 2 周：基础任务实践",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T10:00:00+08:00"
+      },
+      {
+        "id": "task_04_3",
+        "internId": "intern_04",
+        "title": "执行一轮基础回归测试",
+        "description": "测试开发实习生第 2 周培养任务",
+        "completionCriteria": "提交回归结果和问题清单",
+        "dueDate": "2026-06-09T10:00:00+08:00",
+        "status": "todo",
+        "stage": "第 2 周：基础任务实践",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T09:00:00+08:00"
+      },
+      {
+        "id": "task_05_1",
+        "internId": "intern_05",
+        "title": "完成本地开发环境配置",
+        "description": "后端开发实习生第 4 周培养任务",
+        "completionCriteria": "项目可正常启动，依赖和数据库连接配置完成",
+        "dueDate": "2026-06-07T10:00:00+08:00",
+        "status": "done",
+        "stage": "第 4 周：独立交付观察",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T10:00:00+08:00"
+      },
+      {
+        "id": "task_05_2",
+        "internId": "intern_05",
+        "title": "熟悉服务模块与接口文档",
+        "description": "后端开发实习生第 4 周培养任务",
+        "completionCriteria": "能够说明当前负责模块的输入、输出和依赖关系",
+        "dueDate": "2026-06-08T10:00:00+08:00",
+        "status": "done",
+        "stage": "第 4 周：独立交付观察",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T09:00:00+08:00"
+      },
+      {
+        "id": "task_05_3",
+        "internId": "intern_05",
+        "title": "完成一个低风险接口优化任务",
+        "description": "后端开发实习生第 4 周培养任务",
+        "completionCriteria": "提交代码、测试记录和简短复盘",
+        "dueDate": "2026-06-09T10:00:00+08:00",
+        "status": "in_progress",
+        "stage": "第 4 周：独立交付观察",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T08:00:00+08:00"
+      },
+      {
+        "id": "task_06_1",
+        "internId": "intern_06",
+        "title": "熟悉测试环境与常用工具",
+        "description": "测试开发实习生第 1 周培养任务",
+        "completionCriteria": "完成环境验证并提交配置记录",
+        "dueDate": "2026-06-07T10:00:00+08:00",
+        "status": "in_progress",
+        "stage": "第 1 周：环境与流程熟悉",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T09:00:00+08:00"
+      },
+      {
+        "id": "task_06_2",
+        "internId": "intern_06",
+        "title": "阅读测试用例与缺陷流程",
+        "description": "测试开发实习生第 1 周培养任务",
+        "completionCriteria": "能够独立创建一条规范缺陷记录",
+        "dueDate": "2026-06-08T10:00:00+08:00",
+        "status": "todo",
+        "stage": "第 1 周：环境与流程熟悉",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T08:00:00+08:00"
+      },
+      {
+        "id": "task_06_3",
+        "internId": "intern_06",
+        "title": "执行一轮基础回归测试",
+        "description": "测试开发实习生第 1 周培养任务",
+        "completionCriteria": "提交回归结果和问题清单",
+        "dueDate": "2026-06-09T10:00:00+08:00",
+        "status": "todo",
+        "stage": "第 1 周：环境与流程熟悉",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T07:00:00+08:00"
+      },
+      {
+        "id": "task_07_1",
+        "internId": "intern_07",
+        "title": "完成前端项目环境配置",
+        "description": "前端开发实习生第 3 周培养任务",
+        "completionCriteria": "项目可本地运行并完成一次基础构建",
+        "dueDate": "2026-06-07T10:00:00+08:00",
+        "status": "done",
+        "stage": "第 3 周：真实任务参与",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T08:00:00+08:00"
+      },
+      {
+        "id": "task_07_2",
+        "internId": "intern_07",
+        "title": "熟悉组件目录与接口联调流程",
+        "description": "前端开发实习生第 3 周培养任务",
+        "completionCriteria": "能够定位页面入口和主要接口",
+        "dueDate": "2026-06-08T10:00:00+08:00",
+        "status": "done",
+        "stage": "第 3 周：真实任务参与",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T07:00:00+08:00"
+      },
+      {
+        "id": "task_07_3",
+        "internId": "intern_07",
+        "title": "完成一个低风险页面优化",
+        "description": "前端开发实习生第 3 周培养任务",
+        "completionCriteria": "提交代码、截图和测试说明",
+        "dueDate": "2026-06-09T10:00:00+08:00",
+        "status": "in_progress",
+        "stage": "第 3 周：真实任务参与",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T06:00:00+08:00"
+      },
+      {
+        "id": "task_08_1",
+        "internId": "intern_08",
+        "title": "完成本地开发环境配置",
+        "description": "后端开发实习生第 2 周培养任务",
+        "completionCriteria": "项目可正常启动，依赖和数据库连接配置完成",
+        "dueDate": "2026-06-07T10:00:00+08:00",
+        "status": "in_progress",
+        "stage": "第 2 周：基础任务实践",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T07:00:00+08:00"
+      },
+      {
+        "id": "task_08_2",
+        "internId": "intern_08",
+        "title": "熟悉服务模块与接口文档",
+        "description": "后端开发实习生第 2 周培养任务",
+        "completionCriteria": "能够说明当前负责模块的输入、输出和依赖关系",
+        "dueDate": "2026-06-08T10:00:00+08:00",
+        "status": "in_progress",
+        "stage": "第 2 周：基础任务实践",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T06:00:00+08:00"
+      },
+      {
+        "id": "task_08_3",
+        "internId": "intern_08",
+        "title": "完成一个低风险接口优化任务",
+        "description": "后端开发实习生第 2 周培养任务",
+        "completionCriteria": "提交代码、测试记录和简短复盘",
+        "dueDate": "2026-06-09T10:00:00+08:00",
+        "status": "todo",
+        "stage": "第 2 周：基础任务实践",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T05:00:00+08:00"
+      },
+      {
+        "id": "task_09_1",
+        "internId": "intern_09",
+        "title": "熟悉测试环境与常用工具",
+        "description": "测试开发实习生第 4 周培养任务",
+        "completionCriteria": "完成环境验证并提交配置记录",
+        "dueDate": "2026-06-07T10:00:00+08:00",
+        "status": "done",
+        "stage": "第 4 周：独立交付观察",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T06:00:00+08:00"
+      },
+      {
+        "id": "task_09_2",
+        "internId": "intern_09",
+        "title": "阅读测试用例与缺陷流程",
+        "description": "测试开发实习生第 4 周培养任务",
+        "completionCriteria": "能够独立创建一条规范缺陷记录",
+        "dueDate": "2026-06-08T10:00:00+08:00",
+        "status": "done",
+        "stage": "第 4 周：独立交付观察",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T05:00:00+08:00"
+      },
+      {
+        "id": "task_09_3",
+        "internId": "intern_09",
+        "title": "执行一轮基础回归测试",
+        "description": "测试开发实习生第 4 周培养任务",
+        "completionCriteria": "提交回归结果和问题清单",
+        "dueDate": "2026-06-09T10:00:00+08:00",
+        "status": "in_progress",
+        "stage": "第 4 周：独立交付观察",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T10:00:00+08:00"
+      },
+      {
+        "id": "task_10_1",
+        "internId": "intern_10",
+        "title": "熟悉业务资料和产品流程",
+        "description": "产品实习生第 1 周培养任务",
+        "completionCriteria": "完成产品流程图和关键指标理解记录",
+        "dueDate": "2026-06-07T10:00:00+08:00",
+        "status": "in_progress",
+        "stage": "第 1 周：业务与流程熟悉",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T05:00:00+08:00"
+      },
+      {
+        "id": "task_10_2",
+        "internId": "intern_10",
+        "title": "拆解一个真实需求",
+        "description": "产品实习生第 1 周培养任务",
+        "completionCriteria": "提交需求背景、用户场景和验收标准",
+        "dueDate": "2026-06-08T10:00:00+08:00",
+        "status": "todo",
+        "stage": "第 1 周：业务与流程熟悉",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T10:00:00+08:00"
+      },
+      {
+        "id": "task_10_3",
+        "internId": "intern_10",
+        "title": "参与一次需求评审",
+        "description": "产品实习生第 1 周培养任务",
+        "completionCriteria": "记录评审问题并完成修改说明",
+        "dueDate": "2026-06-09T10:00:00+08:00",
+        "status": "todo",
+        "stage": "第 1 周：业务与流程熟悉",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T09:00:00+08:00"
+      },
+      {
+        "id": "task_11_1",
+        "internId": "intern_11",
+        "title": "熟悉业务资料和产品流程",
+        "description": "产品实习生第 2 周培养任务",
+        "completionCriteria": "完成产品流程图和关键指标理解记录",
+        "dueDate": "2026-06-07T10:00:00+08:00",
+        "status": "in_progress",
+        "stage": "第 2 周：需求拆解实践",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T10:00:00+08:00"
+      },
+      {
+        "id": "task_11_2",
+        "internId": "intern_11",
+        "title": "拆解一个真实需求",
+        "description": "产品实习生第 2 周培养任务",
+        "completionCriteria": "提交需求背景、用户场景和验收标准",
+        "dueDate": "2026-06-08T10:00:00+08:00",
+        "status": "in_progress",
+        "stage": "第 2 周：需求拆解实践",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T09:00:00+08:00"
+      },
+      {
+        "id": "task_11_3",
+        "internId": "intern_11",
+        "title": "参与一次需求评审",
+        "description": "产品实习生第 2 周培养任务",
+        "completionCriteria": "记录评审问题并完成修改说明",
+        "dueDate": "2026-06-09T10:00:00+08:00",
+        "status": "todo",
+        "stage": "第 2 周：需求拆解实践",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T08:00:00+08:00"
+      },
+      {
+        "id": "task_12_1",
+        "internId": "intern_12",
+        "title": "熟悉业务资料和产品流程",
+        "description": "产品实习生第 3 周培养任务",
+        "completionCriteria": "完成产品流程图和关键指标理解记录",
+        "dueDate": "2026-06-07T10:00:00+08:00",
+        "status": "done",
+        "stage": "第 3 周：真实项目参与",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T09:00:00+08:00"
+      },
+      {
+        "id": "task_12_2",
+        "internId": "intern_12",
+        "title": "拆解一个真实需求",
+        "description": "产品实习生第 3 周培养任务",
+        "completionCriteria": "提交需求背景、用户场景和验收标准",
+        "dueDate": "2026-06-08T10:00:00+08:00",
+        "status": "done",
+        "stage": "第 3 周：真实项目参与",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T08:00:00+08:00"
+      },
+      {
+        "id": "task_12_3",
+        "internId": "intern_12",
+        "title": "参与一次需求评审",
+        "description": "产品实习生第 3 周培养任务",
+        "completionCriteria": "记录评审问题并完成修改说明",
+        "dueDate": "2026-06-09T10:00:00+08:00",
+        "status": "in_progress",
+        "stage": "第 3 周：真实项目参与",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T07:00:00+08:00"
+      },
+      {
+        "id": "task_13_1",
+        "internId": "intern_13",
+        "title": "熟悉用户研究资料",
+        "description": "用户研究实习生第 2 周培养任务",
+        "completionCriteria": "整理目标用户画像和已有结论",
+        "dueDate": "2026-06-07T10:00:00+08:00",
+        "status": "done",
+        "stage": "第 2 周：调研任务实践",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T08:00:00+08:00"
+      },
+      {
+        "id": "task_13_2",
+        "internId": "intern_13",
+        "title": "设计一份访谈提纲",
+        "description": "用户研究实习生第 2 周培养任务",
+        "completionCriteria": "提交访谈目标、问题列表和记录模板",
+        "dueDate": "2026-06-08T10:00:00+08:00",
+        "status": "in_progress",
+        "stage": "第 2 周：调研任务实践",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T07:00:00+08:00"
+      },
+      {
+        "id": "task_13_3",
+        "internId": "intern_13",
+        "title": "完成访谈信息归纳",
+        "description": "用户研究实习生第 2 周培养任务",
+        "completionCriteria": "输出主要发现和待验证假设",
+        "dueDate": "2026-06-09T10:00:00+08:00",
+        "status": "todo",
+        "stage": "第 2 周：调研任务实践",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T06:00:00+08:00"
+      },
+      {
+        "id": "task_14_1",
+        "internId": "intern_14",
+        "title": "熟悉运营流程和数据口径",
+        "description": "产品运营实习生第 4 周培养任务",
+        "completionCriteria": "完成运营指标说明和常见流程记录",
+        "dueDate": "2026-06-07T10:00:00+08:00",
+        "status": "done",
+        "stage": "第 4 周：独立交付观察",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T07:00:00+08:00"
+      },
+      {
+        "id": "task_14_2",
+        "internId": "intern_14",
+        "title": "整理一份活动复盘",
+        "description": "产品运营实习生第 4 周培养任务",
+        "completionCriteria": "提交数据表现、问题和改进建议",
+        "dueDate": "2026-06-08T10:00:00+08:00",
+        "status": "done",
+        "stage": "第 4 周：独立交付观察",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T06:00:00+08:00"
+      },
+      {
+        "id": "task_14_3",
+        "internId": "intern_14",
+        "title": "完成一项低风险运营任务",
+        "description": "产品运营实习生第 4 周培养任务",
+        "completionCriteria": "提交执行结果和复盘",
+        "dueDate": "2026-06-09T10:00:00+08:00",
+        "status": "in_progress",
+        "stage": "第 4 周：独立交付观察",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T05:00:00+08:00"
+      },
+      {
+        "id": "task_15_1",
+        "internId": "intern_15",
+        "title": "熟悉运营流程和数据口径",
+        "description": "产品运营实习生第 1 周培养任务",
+        "completionCriteria": "完成运营指标说明和常见流程记录",
+        "dueDate": "2026-06-07T10:00:00+08:00",
+        "status": "in_progress",
+        "stage": "第 1 周：业务与流程熟悉",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T06:00:00+08:00"
+      },
+      {
+        "id": "task_15_2",
+        "internId": "intern_15",
+        "title": "整理一份活动复盘",
+        "description": "产品运营实习生第 1 周培养任务",
+        "completionCriteria": "提交数据表现、问题和改进建议",
+        "dueDate": "2026-06-08T10:00:00+08:00",
+        "status": "todo",
+        "stage": "第 1 周：业务与流程熟悉",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T05:00:00+08:00"
+      },
+      {
+        "id": "task_15_3",
+        "internId": "intern_15",
+        "title": "完成一项低风险运营任务",
+        "description": "产品运营实习生第 1 周培养任务",
+        "completionCriteria": "提交执行结果和复盘",
+        "dueDate": "2026-06-09T10:00:00+08:00",
+        "status": "todo",
+        "stage": "第 1 周：业务与流程熟悉",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T10:00:00+08:00"
+      },
+      {
+        "id": "task_16_1",
+        "internId": "intern_16",
+        "title": "熟悉产品资料与 CRM 工具",
+        "description": "销售实习生第 1 周培养任务",
+        "completionCriteria": "完成产品卖点笔记并可正常使用 CRM",
+        "dueDate": "2026-06-07T10:00:00+08:00",
+        "status": "in_progress",
+        "stage": "第 1 周：产品与工具熟悉",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T05:00:00+08:00"
+      },
+      {
+        "id": "task_16_2",
+        "internId": "intern_16",
+        "title": "整理客户沟通准备清单",
+        "description": "销售实习生第 1 周培养任务",
+        "completionCriteria": "提交客户背景、需求和沟通目标",
+        "dueDate": "2026-06-08T10:00:00+08:00",
+        "status": "todo",
+        "stage": "第 1 周：产品与工具熟悉",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T10:00:00+08:00"
+      },
+      {
+        "id": "task_16_3",
+        "internId": "intern_16",
+        "title": "参与一次客户沟通复盘",
+        "description": "销售实习生第 1 周培养任务",
+        "completionCriteria": "输出客户反馈和下一步动作",
+        "dueDate": "2026-06-09T10:00:00+08:00",
+        "status": "todo",
+        "stage": "第 1 周：产品与工具熟悉",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T09:00:00+08:00"
+      },
+      {
+        "id": "task_17_1",
+        "internId": "intern_17",
+        "title": "熟悉产品资料与 CRM 工具",
+        "description": "销售实习生第 2 周培养任务",
+        "completionCriteria": "完成产品卖点笔记并可正常使用 CRM",
+        "dueDate": "2026-06-07T10:00:00+08:00",
+        "status": "done",
+        "stage": "第 2 周：客户沟通实践",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T10:00:00+08:00"
+      },
+      {
+        "id": "task_17_2",
+        "internId": "intern_17",
+        "title": "整理客户沟通准备清单",
+        "description": "销售实习生第 2 周培养任务",
+        "completionCriteria": "提交客户背景、需求和沟通目标",
+        "dueDate": "2026-06-08T10:00:00+08:00",
+        "status": "in_progress",
+        "stage": "第 2 周：客户沟通实践",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T09:00:00+08:00"
+      },
+      {
+        "id": "task_17_3",
+        "internId": "intern_17",
+        "title": "参与一次客户沟通复盘",
+        "description": "销售实习生第 2 周培养任务",
+        "completionCriteria": "输出客户反馈和下一步动作",
+        "dueDate": "2026-06-09T10:00:00+08:00",
+        "status": "todo",
+        "stage": "第 2 周：客户沟通实践",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T08:00:00+08:00"
+      },
+      {
+        "id": "task_18_1",
+        "internId": "intern_18",
+        "title": "熟悉销售支持流程",
+        "description": "销售支持实习生第 3 周培养任务",
+        "completionCriteria": "完成常用资料与工具清单",
+        "dueDate": "2026-06-07T10:00:00+08:00",
+        "status": "done",
+        "stage": "第 3 周：客户协同实践",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T09:00:00+08:00"
+      },
+      {
+        "id": "task_18_2",
+        "internId": "intern_18",
+        "title": "整理客户资料",
+        "description": "销售支持实习生第 3 周培养任务",
+        "completionCriteria": "提交结构化客户背景信息",
+        "dueDate": "2026-06-08T10:00:00+08:00",
+        "status": "done",
+        "stage": "第 3 周：客户协同实践",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T08:00:00+08:00"
+      },
+      {
+        "id": "task_18_3",
+        "internId": "intern_18",
+        "title": "支持一次客户协同任务",
+        "description": "销售支持实习生第 3 周培养任务",
+        "completionCriteria": "提交过程记录和复盘",
+        "dueDate": "2026-06-09T10:00:00+08:00",
+        "status": "in_progress",
+        "stage": "第 3 周：客户协同实践",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T07:00:00+08:00"
+      },
+      {
+        "id": "task_19_1",
+        "internId": "intern_19",
+        "title": "熟悉产品资料与 CRM 工具",
+        "description": "销售实习生第 2 周培养任务",
+        "completionCriteria": "完成产品卖点笔记并可正常使用 CRM",
+        "dueDate": "2026-06-07T10:00:00+08:00",
+        "status": "in_progress",
+        "stage": "第 2 周：客户沟通实践",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T08:00:00+08:00"
+      },
+      {
+        "id": "task_19_2",
+        "internId": "intern_19",
+        "title": "整理客户沟通准备清单",
+        "description": "销售实习生第 2 周培养任务",
+        "completionCriteria": "提交客户背景、需求和沟通目标",
+        "dueDate": "2026-06-08T10:00:00+08:00",
+        "status": "in_progress",
+        "stage": "第 2 周：客户沟通实践",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T07:00:00+08:00"
+      },
+      {
+        "id": "task_19_3",
+        "internId": "intern_19",
+        "title": "参与一次客户沟通复盘",
+        "description": "销售实习生第 2 周培养任务",
+        "completionCriteria": "输出客户反馈和下一步动作",
+        "dueDate": "2026-06-09T10:00:00+08:00",
+        "status": "todo",
+        "stage": "第 2 周：客户沟通实践",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T06:00:00+08:00"
+      },
+      {
+        "id": "task_20_1",
+        "internId": "intern_20",
+        "title": "熟悉销售支持流程",
+        "description": "销售支持实习生第 4 周培养任务",
+        "completionCriteria": "完成常用资料与工具清单",
+        "dueDate": "2026-06-07T10:00:00+08:00",
+        "status": "done",
+        "stage": "第 4 周：独立交付观察",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T07:00:00+08:00"
+      },
+      {
+        "id": "task_20_2",
+        "internId": "intern_20",
+        "title": "整理客户资料",
+        "description": "销售支持实习生第 4 周培养任务",
+        "completionCriteria": "提交结构化客户背景信息",
+        "dueDate": "2026-06-08T10:00:00+08:00",
+        "status": "done",
+        "stage": "第 4 周：独立交付观察",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T06:00:00+08:00"
+      },
+      {
+        "id": "task_20_3",
+        "internId": "intern_20",
+        "title": "支持一次客户协同任务",
+        "description": "销售支持实习生第 4 周培养任务",
+        "completionCriteria": "提交过程记录和复盘",
+        "dueDate": "2026-06-09T10:00:00+08:00",
+        "status": "in_progress",
+        "stage": "第 4 周：独立交付观察",
+        "createdAt": "2026-05-26T10:00:00+08:00",
+        "updatedAt": "2026-06-02T05:00:00+08:00"
+      }
+    ],
+    "progress_logs": [
+      {
+        "id": "log_01_01",
+        "internId": "intern_01",
+        "rawText": "今天完成了开发环境配置，但本地数据库连接仍然失败。我查阅了文档并重启服务，怀疑是权限或 IP 白名单问题。",
+        "completedItems": [
+          "完成基础环境配置",
+          "检查配置文件",
+          "重启服务"
+        ],
+        "blockers": [
+          "数据库连接失败"
+        ],
+        "attemptedActions": [
+          "查阅研发环境配置 FAQ",
+          "检查配置文件",
+          "重启服务"
+        ],
+        "impactsMainTask": true,
+        "nextSuggestion": "优先确认测试账号权限和 IP 白名单；接近约定时限时主动联系 Mentor。",
+        "createdAt": "2026-06-02T09:00:00+08:00"
+      },
+      {
+        "id": "log_02_01",
+        "internId": "intern_02",
+        "rawText": "今天完成了当前任务的主要步骤，并根据文档进行了基础验证。接下来继续补充测试记录。",
+        "completedItems": [
+          "完成当天计划中的主要步骤"
+        ],
+        "blockers": [],
+        "attemptedActions": [
+          "查阅部门资料"
+        ],
+        "impactsMainTask": false,
+        "nextSuggestion": "继续推进当前任务，并在下次 Mentor 沟通节点前更新进展。",
+        "createdAt": "2026-06-02T08:00:00+08:00"
+      },
+      {
+        "id": "log_03_01",
+        "internId": "intern_03",
+        "rawText": "页面联调仍然无法稳定复现接口返回异常。我已经检查请求参数并尝试切换测试账号，但核心任务还没有推进。",
+        "completedItems": [
+          "检查请求参数",
+          "切换测试账号"
+        ],
+        "blockers": [
+          "接口返回异常，前端联调阻塞"
+        ],
+        "attemptedActions": [
+          "检查请求参数",
+          "切换测试账号",
+          "查看接口文档"
+        ],
+        "impactsMainTask": true,
+        "nextSuggestion": "已超过技术问题沟通阈值，建议立即联系 Mentor 并附上复现步骤。",
+        "createdAt": "2026-06-02T07:00:00+08:00"
+      },
+      {
+        "id": "log_04_01",
+        "internId": "intern_04",
+        "rawText": "今天完成了当前任务的主要步骤，并根据文档进行了基础验证。接下来继续补充测试记录。",
+        "completedItems": [
+          "完成当天计划中的主要步骤"
+        ],
+        "blockers": [],
+        "attemptedActions": [
+          "查阅部门资料"
+        ],
+        "impactsMainTask": false,
+        "nextSuggestion": "继续推进当前任务，并在下次 Mentor 沟通节点前更新进展。",
+        "createdAt": "2026-06-02T06:00:00+08:00"
+      },
+      {
+        "id": "log_05_01",
+        "internId": "intern_05",
+        "rawText": "今天完成了当前任务的主要步骤，并根据文档进行了基础验证。接下来继续补充测试记录。",
+        "completedItems": [
+          "完成当天计划中的主要步骤"
+        ],
+        "blockers": [],
+        "attemptedActions": [
+          "查阅部门资料"
+        ],
+        "impactsMainTask": false,
+        "nextSuggestion": "继续推进当前任务，并在下次 Mentor 沟通节点前更新进展。",
+        "createdAt": "2026-06-02T10:00:00+08:00"
+      },
+      {
+        "id": "log_06_01",
+        "internId": "intern_06",
+        "rawText": "三天前完成了测试工具安装，后续还没有更新进展。",
+        "completedItems": [
+          "安装测试工具"
+        ],
+        "blockers": [
+          "进展记录长期未更新"
+        ],
+        "attemptedActions": [],
+        "impactsMainTask": false,
+        "nextSuggestion": "补充最近三天进展，确认是否存在未上报卡点。",
+        "createdAt": "2026-05-30T09:00:00+08:00"
+      },
+      {
+        "id": "log_07_01",
+        "internId": "intern_07",
+        "rawText": "今天完成了当前任务的主要步骤，并根据文档进行了基础验证。接下来继续补充测试记录。",
+        "completedItems": [
+          "完成当天计划中的主要步骤"
+        ],
+        "blockers": [],
+        "attemptedActions": [
+          "查阅部门资料"
+        ],
+        "impactsMainTask": false,
+        "nextSuggestion": "继续推进当前任务，并在下次 Mentor 沟通节点前更新进展。",
+        "createdAt": "2026-06-02T08:00:00+08:00"
+      },
+      {
+        "id": "log_08_01",
+        "internId": "intern_08",
+        "rawText": "今天完成了当前任务的主要步骤，并根据文档进行了基础验证。接下来继续补充测试记录。",
+        "completedItems": [
+          "完成当天计划中的主要步骤"
+        ],
+        "blockers": [],
+        "attemptedActions": [
+          "查阅部门资料"
+        ],
+        "impactsMainTask": false,
+        "nextSuggestion": "继续推进当前任务，并在下次 Mentor 沟通节点前更新进展。",
+        "createdAt": "2026-06-02T07:00:00+08:00"
+      },
+      {
+        "id": "log_09_01",
+        "internId": "intern_09",
+        "rawText": "今天完成了当前任务的主要步骤，并根据文档进行了基础验证。接下来继续补充测试记录。",
+        "completedItems": [
+          "完成当天计划中的主要步骤"
+        ],
+        "blockers": [],
+        "attemptedActions": [
+          "查阅部门资料"
+        ],
+        "impactsMainTask": false,
+        "nextSuggestion": "继续推进当前任务，并在下次 Mentor 沟通节点前更新进展。",
+        "createdAt": "2026-06-02T06:00:00+08:00"
+      },
+      {
+        "id": "log_10_01",
+        "internId": "intern_10",
+        "rawText": "今天完成了业务资料阅读和任务拆解，已整理待确认问题，下一步补充验收标准。",
+        "completedItems": [
+          "完成当天计划中的主要步骤"
+        ],
+        "blockers": [],
+        "attemptedActions": [
+          "查阅部门资料"
+        ],
+        "impactsMainTask": false,
+        "nextSuggestion": "继续推进当前任务，并在下次 Mentor 沟通节点前更新进展。",
+        "createdAt": "2026-06-02T10:00:00+08:00"
+      },
+      {
+        "id": "log_11_01",
+        "internId": "intern_11",
+        "rawText": "需求文档中的目标用户和优先级边界还不够清楚。我已经对照了旧版需求，但仍不确定本次范围。",
+        "completedItems": [
+          "阅读旧版需求",
+          "整理范围差异"
+        ],
+        "blockers": [
+          "需求范围和优先级边界不明确"
+        ],
+        "attemptedActions": [
+          "阅读旧版需求",
+          "整理待确认问题"
+        ],
+        "impactsMainTask": true,
+        "nextSuggestion": "业务理解问题接近阈值，建议尽快与 Mentor 对齐方向。",
+        "createdAt": "2026-06-02T09:00:00+08:00"
+      },
+      {
+        "id": "log_12_01",
+        "internId": "intern_12",
+        "rawText": "今天完成了业务资料阅读和任务拆解，已整理待确认问题，下一步补充验收标准。",
+        "completedItems": [
+          "完成当天计划中的主要步骤"
+        ],
+        "blockers": [],
+        "attemptedActions": [
+          "查阅部门资料"
+        ],
+        "impactsMainTask": false,
+        "nextSuggestion": "继续推进当前任务，并在下次 Mentor 沟通节点前更新进展。",
+        "createdAt": "2026-06-02T08:00:00+08:00"
+      },
+      {
+        "id": "log_13_01",
+        "internId": "intern_13",
+        "rawText": "今天完成了业务资料阅读和任务拆解，已整理待确认问题，下一步补充验收标准。",
+        "completedItems": [
+          "完成当天计划中的主要步骤"
+        ],
+        "blockers": [],
+        "attemptedActions": [
+          "查阅部门资料"
+        ],
+        "impactsMainTask": false,
+        "nextSuggestion": "继续推进当前任务，并在下次 Mentor 沟通节点前更新进展。",
+        "createdAt": "2026-06-02T07:00:00+08:00"
+      },
+      {
+        "id": "log_14_01",
+        "internId": "intern_14",
+        "rawText": "三天前提交了活动复盘初稿，后续没有更新状态。",
+        "completedItems": [
+          "提交活动复盘初稿"
+        ],
+        "blockers": [
+          "进展记录长期未更新"
+        ],
+        "attemptedActions": [],
+        "impactsMainTask": false,
+        "nextSuggestion": "补充最近三天进展，并确认是否需要 Mentor 反馈。",
+        "createdAt": "2026-05-30T06:00:00+08:00"
+      },
+      {
+        "id": "log_15_01",
+        "internId": "intern_15",
+        "rawText": "今天完成了业务资料阅读和任务拆解，已整理待确认问题，下一步补充验收标准。",
+        "completedItems": [
+          "完成当天计划中的主要步骤"
+        ],
+        "blockers": [],
+        "attemptedActions": [
+          "查阅部门资料"
+        ],
+        "impactsMainTask": false,
+        "nextSuggestion": "继续推进当前任务，并在下次 Mentor 沟通节点前更新进展。",
+        "createdAt": "2026-06-02T10:00:00+08:00"
+      },
+      {
+        "id": "log_16_01",
+        "internId": "intern_16",
+        "rawText": "今天熟悉了产品资料和客户沟通流程，已整理关键卖点，下一步继续完善客户信息。",
+        "completedItems": [
+          "完成当天计划中的主要步骤"
+        ],
+        "blockers": [],
+        "attemptedActions": [
+          "查阅部门资料"
+        ],
+        "impactsMainTask": false,
+        "nextSuggestion": "继续推进当前任务，并在下次 Mentor 沟通节点前更新进展。",
+        "createdAt": "2026-06-02T09:00:00+08:00"
+      },
+      {
+        "id": "log_17_01",
+        "internId": "intern_17",
+        "rawText": "今天熟悉了产品资料和客户沟通流程，已整理关键卖点，下一步继续完善客户信息。",
+        "completedItems": [
+          "完成当天计划中的主要步骤"
+        ],
+        "blockers": [],
+        "attemptedActions": [
+          "查阅部门资料"
+        ],
+        "impactsMainTask": false,
+        "nextSuggestion": "继续推进当前任务，并在下次 Mentor 沟通节点前更新进展。",
+        "createdAt": "2026-06-02T08:00:00+08:00"
+      },
+      {
+        "id": "log_18_01",
+        "internId": "intern_18",
+        "rawText": "客户资料中出现了不确定的敏感信息使用边界。我没有继续操作，希望先确认合规处理方式。",
+        "completedItems": [
+          "整理客户资料"
+        ],
+        "blockers": [
+          "客户资料使用边界不明确"
+        ],
+        "attemptedActions": [
+          "暂停后续操作",
+          "标记敏感信息"
+        ],
+        "impactsMainTask": true,
+        "nextSuggestion": "涉及客户信息边界，应立即升级给 Mentor，不建议继续自行处理。",
+        "createdAt": "2026-06-02T07:00:00+08:00"
+      },
+      {
+        "id": "log_19_01",
+        "internId": "intern_19",
+        "rawText": "今天熟悉了产品资料和客户沟通流程，已整理关键卖点，下一步继续完善客户信息。",
+        "completedItems": [
+          "完成当天计划中的主要步骤"
+        ],
+        "blockers": [],
+        "attemptedActions": [
+          "查阅部门资料"
+        ],
+        "impactsMainTask": false,
+        "nextSuggestion": "继续推进当前任务，并在下次 Mentor 沟通节点前更新进展。",
+        "createdAt": "2026-06-02T06:00:00+08:00"
+      },
+      {
+        "id": "log_20_01",
+        "internId": "intern_20",
+        "rawText": "今天熟悉了产品资料和客户沟通流程，已整理关键卖点，下一步继续完善客户信息。",
+        "completedItems": [
+          "完成当天计划中的主要步骤"
+        ],
+        "blockers": [],
+        "attemptedActions": [
+          "查阅部门资料"
+        ],
+        "impactsMainTask": false,
+        "nextSuggestion": "继续推进当前任务，并在下次 Mentor 沟通节点前更新进展。",
+        "createdAt": "2026-06-02T10:00:00+08:00"
+      }
+    ],
+    "issue_cards": [
+      {
+        "id": "issue_001",
+        "internId": "intern_01",
+        "taskId": "task_01_1",
+        "title": "本地启动服务时数据库连接失败",
+        "description": "完成基础环境配置后，启动服务仍提示数据库连接失败。",
+        "attemptedMethods": [
+          "检查配置文件",
+          "重启服务",
+          "搜索报错关键词"
+        ],
+        "initialJudgement": "可能与测试账号权限或 IP 白名单有关",
+        "expectedHelp": "希望确认测试环境账号权限",
+        "blocksMainTask": true,
+        "issueType": "permission",
+        "status": "near_threshold",
+        "elapsedMinutes": 42,
+        "thresholdMinutes": 45,
+        "aiSummary": "陈晨在配置本地开发环境时遇到数据库连接失败。已检查配置文件、重启服务并搜索报错关键词，目前怀疑与测试账号权限或 IP 白名单有关。该问题已阻塞后续任务 42 分钟，接近沟通阈值。",
+        "recommendedKnowledgeIds": [
+          "kb_01",
+          "kb_02"
+        ],
+        "createdAt": "2026-06-02T09:18:00+08:00",
+        "updatedAt": "2026-06-02T10:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "issue_002",
+        "internId": "intern_02",
+        "taskId": "task_02_1",
+        "title": "依赖安装版本冲突",
+        "description": "安装项目依赖时出现版本冲突，本地构建失败。",
+        "attemptedMethods": [
+          "重新安装依赖",
+          "查看 README",
+          "对比 lock 文件"
+        ],
+        "initialJudgement": "可能是 Node 版本与项目要求不一致",
+        "expectedHelp": "暂时不需要 Mentor 介入，先继续按照文档排查",
+        "blocksMainTask": true,
+        "issueType": "environment",
+        "status": "self_checking",
+        "elapsedMinutes": 18,
+        "thresholdMinutes": 45,
+        "aiSummary": "刘洋在完成研发环境配置时遇到依赖版本冲突，已重新安装依赖并对比 lock 文件。当前仍处于自主排查阶段。",
+        "recommendedKnowledgeIds": [
+          "kb_01"
+        ],
+        "createdAt": "2026-06-02T09:42:00+08:00",
+        "updatedAt": "2026-06-02T10:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "issue_003",
+        "internId": "intern_03",
+        "taskId": "task_03_3",
+        "title": "前端联调接口异常无法稳定复现",
+        "description": "页面联调过程中接口偶发返回异常，已影响当前优化任务。",
+        "attemptedMethods": [
+          "检查请求参数",
+          "切换测试账号",
+          "查看接口文档",
+          "记录复现步骤"
+        ],
+        "initialJudgement": "可能与测试环境数据或接口异常有关",
+        "expectedHelp": "希望 Mentor 帮助判断是否需要联系后端接口人",
+        "blocksMainTask": true,
+        "issueType": "technical",
+        "status": "need_communicate",
+        "elapsedMinutes": 110,
+        "thresholdMinutes": 90,
+        "aiSummary": "张宁的前端联调问题已经超过技术实现类默认阈值。当前已检查参数、切换账号并记录复现过程，但仍然阻塞主线任务，建议主动联系 Mentor。",
+        "recommendedKnowledgeIds": [
+          "kb_03"
+        ],
+        "createdAt": "2026-06-02T08:10:00+08:00",
+        "updatedAt": "2026-06-02T10:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "issue_004",
+        "internId": "intern_05",
+        "taskId": "task_05_3",
+        "title": "接口优化任务范围不明确",
+        "description": "不确定本次优化是否需要同时调整历史兼容逻辑。",
+        "attemptedMethods": [
+          "阅读任务说明",
+          "对比历史提交记录"
+        ],
+        "initialJudgement": "可能涉及任务边界判断",
+        "expectedHelp": "希望与 Mentor 确认任务范围",
+        "blocksMainTask": false,
+        "issueType": "business",
+        "status": "waiting_mentor",
+        "elapsedMinutes": 35,
+        "thresholdMinutes": 30,
+        "aiSummary": "赵一凡在独立交付任务中遇到范围边界问题，已查阅任务说明和历史提交。问题不直接阻塞主线，但已超过业务理解类阈值，正在等待 Mentor 对齐。",
+        "recommendedKnowledgeIds": [],
+        "createdAt": "2026-06-02T09:25:00+08:00",
+        "updatedAt": "2026-06-02T10:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "issue_005",
+        "internId": "intern_07",
+        "taskId": "task_07_2",
+        "title": "组件目录入口不清晰",
+        "description": "初次定位页面入口时不确定应修改哪个组件。",
+        "attemptedMethods": [
+          "搜索路由配置",
+          "查看组件目录"
+        ],
+        "initialJudgement": "可能遗漏了模块说明文档",
+        "expectedHelp": "希望确认文档入口",
+        "blocksMainTask": false,
+        "issueType": "environment",
+        "status": "resolved",
+        "elapsedMinutes": 20,
+        "thresholdMinutes": 45,
+        "aiSummary": "周越已通过前端目录说明定位组件入口，问题已解决。",
+        "recommendedKnowledgeIds": [
+          "kb_03"
+        ],
+        "createdAt": "2026-06-02T08:00:00+08:00",
+        "updatedAt": "2026-06-02T08:20:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "issue_006",
+        "internId": "intern_08",
+        "taskId": "task_08_1",
+        "title": "测试数据库账号无法访问",
+        "description": "启动服务时报账号无权访问测试数据库。",
+        "attemptedMethods": [
+          "检查配置文件",
+          "更换网络",
+          "尝试重新登录"
+        ],
+        "initialJudgement": "可能尚未加入白名单",
+        "expectedHelp": "希望确认账号开通状态",
+        "blocksMainTask": true,
+        "issueType": "permission",
+        "status": "waiting_mentor",
+        "elapsedMinutes": 22,
+        "thresholdMinutes": 15,
+        "aiSummary": "孙浩遇到测试数据库访问权限问题，已检查配置并尝试重新登录。该问题超过权限类阈值并阻塞任务，已请求 Mentor 协助。",
+        "recommendedKnowledgeIds": [
+          "kb_01",
+          "kb_02"
+        ],
+        "createdAt": "2026-06-02T09:38:00+08:00",
+        "updatedAt": "2026-06-02T10:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "issue_007",
+        "internId": "intern_11",
+        "taskId": "task_11_2",
+        "title": "需求优先级边界不明确",
+        "description": "需求文档中没有清楚说明本次迭代必须覆盖哪些用户场景。",
+        "attemptedMethods": [
+          "阅读旧版需求",
+          "整理场景差异",
+          "标记待确认问题"
+        ],
+        "initialJudgement": "可能需要与 Mentor 对齐业务优先级",
+        "expectedHelp": "希望确认本次需求范围",
+        "blocksMainTask": true,
+        "issueType": "business",
+        "status": "near_threshold",
+        "elapsedMinutes": 25,
+        "thresholdMinutes": 30,
+        "aiSummary": "徐欣已阅读旧版需求并整理场景差异，但仍无法确认本次迭代范围。该问题影响需求拆解，接近业务理解类阈值。",
+        "recommendedKnowledgeIds": [
+          "kb_04"
+        ],
+        "createdAt": "2026-06-02T09:35:00+08:00",
+        "updatedAt": "2026-06-02T10:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "issue_008",
+        "internId": "intern_12",
+        "taskId": "task_12_3",
+        "title": "需求评审反馈存在冲突",
+        "description": "不同协作方对需求验收标准的理解不一致。",
+        "attemptedMethods": [
+          "整理各方反馈",
+          "对照需求文档",
+          "列出冲突点"
+        ],
+        "initialJudgement": "需要 Mentor 协助判断优先级和最终口径",
+        "expectedHelp": "希望安排一次短沟通确认验收标准",
+        "blocksMainTask": true,
+        "issueType": "business",
+        "status": "waiting_mentor",
+        "elapsedMinutes": 38,
+        "thresholdMinutes": 30,
+        "aiSummary": "陈思远在需求评审后发现协作方对验收标准存在冲突。已整理各方反馈和冲突点，当前等待 Mentor 介入确认最终口径。",
+        "recommendedKnowledgeIds": [
+          "kb_04"
+        ],
+        "createdAt": "2026-06-02T09:22:00+08:00",
+        "updatedAt": "2026-06-02T10:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "issue_009",
+        "internId": "intern_15",
+        "taskId": "task_15_1",
+        "title": "运营指标口径理解不一致",
+        "description": "活动复盘模板中的转化率口径与旧文档不一致。",
+        "attemptedMethods": [
+          "查看旧版复盘",
+          "对照指标说明"
+        ],
+        "initialJudgement": "可能是模板版本更新导致",
+        "expectedHelp": "希望确认应使用的新口径",
+        "blocksMainTask": false,
+        "issueType": "business",
+        "status": "resolved",
+        "elapsedMinutes": 18,
+        "thresholdMinutes": 30,
+        "aiSummary": "吴桐已通过最新运营数据口径说明确认指标定义，问题已解决。",
+        "recommendedKnowledgeIds": [
+          "kb_07"
+        ],
+        "createdAt": "2026-06-02T07:00:00+08:00",
+        "updatedAt": "2026-06-02T07:18:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "issue_010",
+        "internId": "intern_16",
+        "taskId": "task_16_1",
+        "title": "CRM 新账号暂无客户资料查看权限",
+        "description": "登录 CRM 后无法查看练习客户资料。",
+        "attemptedMethods": [
+          "重新登录",
+          "查看账号开通说明"
+        ],
+        "initialJudgement": "账号权限可能尚未开通",
+        "expectedHelp": "希望确认 CRM 权限状态",
+        "blocksMainTask": true,
+        "issueType": "permission",
+        "status": "self_checking",
+        "elapsedMinutes": 8,
+        "thresholdMinutes": 15,
+        "aiSummary": "高远的 CRM 新账号暂时无法查看练习客户资料。问题可能属于账号权限未开通，已接近需要人工协助的场景。",
+        "recommendedKnowledgeIds": [
+          "kb_05"
+        ],
+        "createdAt": "2026-06-02T09:52:00+08:00",
+        "updatedAt": "2026-06-02T10:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "issue_011",
+        "internId": "intern_18",
+        "taskId": "task_18_2",
+        "title": "客户资料使用边界不明确",
+        "description": "整理客户资料时发现包含疑似敏感信息，不确定是否可以继续处理。",
+        "attemptedMethods": [
+          "暂停操作",
+          "标记敏感字段",
+          "查看基础规范"
+        ],
+        "initialJudgement": "涉及客户信息合规边界",
+        "expectedHelp": "希望 Mentor 立即确认处理方式",
+        "blocksMainTask": true,
+        "issueType": "business",
+        "status": "waiting_mentor",
+        "elapsedMinutes": 5,
+        "thresholdMinutes": 0,
+        "aiSummary": "马骁在整理客户资料时发现疑似敏感信息，已主动暂停操作。该问题涉及客户信息合规边界，应立即由 Mentor 介入，不适用常规等待阈值。",
+        "recommendedKnowledgeIds": [
+          "kb_06"
+        ],
+        "createdAt": "2026-06-02T09:55:00+08:00",
+        "updatedAt": "2026-06-02T10:00:00+08:00",
+        "isDemoData": true
+      },
+      {
+        "id": "issue_012",
+        "internId": "intern_19",
+        "taskId": "task_19_2",
+        "title": "客户沟通目标不清晰",
+        "description": "准备客户沟通材料时，不确定本次沟通应优先验证需求还是推进产品介绍。",
+        "attemptedMethods": [
+          "阅读客户背景",
+          "整理两个沟通方案"
+        ],
+        "initialJudgement": "需要与 Mentor 对齐客户沟通目标",
+        "expectedHelp": "希望确认沟通优先级",
+        "blocksMainTask": true,
+        "issueType": "business",
+        "status": "need_communicate",
+        "elapsedMinutes": 35,
+        "thresholdMinutes": 30,
+        "aiSummary": "唐婧已整理客户背景和两个沟通方案，但仍不确定本次沟通目标。问题已经超过业务理解类阈值，建议主动联系 Mentor。",
+        "recommendedKnowledgeIds": [],
+        "createdAt": "2026-06-02T09:25:00+08:00",
+        "updatedAt": "2026-06-02T10:00:00+08:00",
+        "isDemoData": true
+      }
+    ],
+    "issue_events": [
+      {
+        "id": "event_issue_001_created",
+        "issueId": "issue_001",
+        "actorId": "intern_01",
+        "actorRole": "intern",
+        "eventType": "created",
+        "content": "实习生创建轻量问题卡片。",
+        "createdAt": "2026-06-02T09:18:00+08:00"
+      },
+      {
+        "id": "event_issue_001_status",
+        "issueId": "issue_001",
+        "actorId": "system",
+        "actorRole": "system",
+        "eventType": "threshold_near",
+        "content": "系统根据问题类型、阻塞程度和已排查时间更新问题状态。",
+        "createdAt": "2026-06-02T09:58:00+08:00"
+      },
+      {
+        "id": "event_issue_002_created",
+        "issueId": "issue_002",
+        "actorId": "intern_02",
+        "actorRole": "intern",
+        "eventType": "created",
+        "content": "实习生创建轻量问题卡片。",
+        "createdAt": "2026-06-02T09:42:00+08:00"
+      },
+      {
+        "id": "event_issue_003_created",
+        "issueId": "issue_003",
+        "actorId": "intern_03",
+        "actorRole": "intern",
+        "eventType": "created",
+        "content": "实习生创建轻量问题卡片。",
+        "createdAt": "2026-06-02T08:10:00+08:00"
+      },
+      {
+        "id": "event_issue_003_status",
+        "issueId": "issue_003",
+        "actorId": "system",
+        "actorRole": "system",
+        "eventType": "communication_suggested",
+        "content": "系统根据问题类型、阻塞程度和已排查时间更新问题状态。",
+        "createdAt": "2026-06-02T09:35:00+08:00"
+      },
+      {
+        "id": "event_issue_004_created",
+        "issueId": "issue_004",
+        "actorId": "intern_05",
+        "actorRole": "intern",
+        "eventType": "created",
+        "content": "实习生创建轻量问题卡片。",
+        "createdAt": "2026-06-02T09:25:00+08:00"
+      },
+      {
+        "id": "event_issue_004_status",
+        "issueId": "issue_004",
+        "actorId": "system",
+        "actorRole": "system",
+        "eventType": "communication_suggested",
+        "content": "系统根据问题类型、阻塞程度和已排查时间更新问题状态。",
+        "createdAt": "2026-06-02T09:50:00+08:00"
+      },
+      {
+        "id": "event_issue_004_mentor",
+        "issueId": "issue_004",
+        "actorId": "intern_05",
+        "actorRole": "intern",
+        "eventType": "mentor_intervened",
+        "content": "实习生已主动联系 Mentor，等待协助。",
+        "createdAt": "2026-06-02T09:58:00+08:00"
+      },
+      {
+        "id": "event_issue_005_created",
+        "issueId": "issue_005",
+        "actorId": "intern_07",
+        "actorRole": "intern",
+        "eventType": "created",
+        "content": "实习生创建轻量问题卡片。",
+        "createdAt": "2026-06-02T08:00:00+08:00"
+      },
+      {
+        "id": "event_issue_005_resolved",
+        "issueId": "issue_005",
+        "actorId": "system",
+        "actorRole": "system",
+        "eventType": "resolved",
+        "content": "问题已解决并沉淀处理记录。",
+        "createdAt": "2026-06-02T09:30:00+08:00"
+      },
+      {
+        "id": "event_issue_006_created",
+        "issueId": "issue_006",
+        "actorId": "intern_08",
+        "actorRole": "intern",
+        "eventType": "created",
+        "content": "实习生创建轻量问题卡片。",
+        "createdAt": "2026-06-02T09:38:00+08:00"
+      },
+      {
+        "id": "event_issue_006_status",
+        "issueId": "issue_006",
+        "actorId": "system",
+        "actorRole": "system",
+        "eventType": "communication_suggested",
+        "content": "系统根据问题类型、阻塞程度和已排查时间更新问题状态。",
+        "createdAt": "2026-06-02T09:48:00+08:00"
+      },
+      {
+        "id": "event_issue_006_mentor",
+        "issueId": "issue_006",
+        "actorId": "intern_08",
+        "actorRole": "intern",
+        "eventType": "mentor_intervened",
+        "content": "实习生已主动联系 Mentor，等待协助。",
+        "createdAt": "2026-06-02T09:58:00+08:00"
+      },
+      {
+        "id": "event_issue_007_created",
+        "issueId": "issue_007",
+        "actorId": "intern_11",
+        "actorRole": "intern",
+        "eventType": "created",
+        "content": "实习生创建轻量问题卡片。",
+        "createdAt": "2026-06-02T09:35:00+08:00"
+      },
+      {
+        "id": "event_issue_007_status",
+        "issueId": "issue_007",
+        "actorId": "system",
+        "actorRole": "system",
+        "eventType": "threshold_near",
+        "content": "系统根据问题类型、阻塞程度和已排查时间更新问题状态。",
+        "createdAt": "2026-06-02T10:00:00+08:00"
+      },
+      {
+        "id": "event_issue_008_created",
+        "issueId": "issue_008",
+        "actorId": "intern_12",
+        "actorRole": "intern",
+        "eventType": "created",
+        "content": "实习生创建轻量问题卡片。",
+        "createdAt": "2026-06-02T09:22:00+08:00"
+      },
+      {
+        "id": "event_issue_008_status",
+        "issueId": "issue_008",
+        "actorId": "system",
+        "actorRole": "system",
+        "eventType": "communication_suggested",
+        "content": "系统根据问题类型、阻塞程度和已排查时间更新问题状态。",
+        "createdAt": "2026-06-02T09:47:00+08:00"
+      },
+      {
+        "id": "event_issue_008_mentor",
+        "issueId": "issue_008",
+        "actorId": "intern_12",
+        "actorRole": "intern",
+        "eventType": "mentor_intervened",
+        "content": "实习生已主动联系 Mentor，等待协助。",
+        "createdAt": "2026-06-02T09:58:00+08:00"
+      },
+      {
+        "id": "event_issue_009_created",
+        "issueId": "issue_009",
+        "actorId": "intern_15",
+        "actorRole": "intern",
+        "eventType": "created",
+        "content": "实习生创建轻量问题卡片。",
+        "createdAt": "2026-06-02T07:00:00+08:00"
+      },
+      {
+        "id": "event_issue_009_resolved",
+        "issueId": "issue_009",
+        "actorId": "system",
+        "actorRole": "system",
+        "eventType": "resolved",
+        "content": "问题已解决并沉淀处理记录。",
+        "createdAt": "2026-06-02T09:30:00+08:00"
+      },
+      {
+        "id": "event_issue_010_created",
+        "issueId": "issue_010",
+        "actorId": "intern_16",
+        "actorRole": "intern",
+        "eventType": "created",
+        "content": "实习生创建轻量问题卡片。",
+        "createdAt": "2026-06-02T09:52:00+08:00"
+      },
+      {
+        "id": "event_issue_011_created",
+        "issueId": "issue_011",
+        "actorId": "intern_18",
+        "actorRole": "intern",
+        "eventType": "created",
+        "content": "实习生创建轻量问题卡片。",
+        "createdAt": "2026-06-02T09:55:00+08:00"
+      },
+      {
+        "id": "event_issue_011_status",
+        "issueId": "issue_011",
+        "actorId": "system",
+        "actorRole": "system",
+        "eventType": "communication_suggested",
+        "content": "系统根据问题类型、阻塞程度和已排查时间更新问题状态。",
+        "createdAt": "2026-06-02T09:55:00+08:00"
+      },
+      {
+        "id": "event_issue_011_mentor",
+        "issueId": "issue_011",
+        "actorId": "intern_18",
+        "actorRole": "intern",
+        "eventType": "mentor_intervened",
+        "content": "实习生已主动联系 Mentor，等待协助。",
+        "createdAt": "2026-06-02T09:58:00+08:00"
+      },
+      {
+        "id": "event_issue_012_created",
+        "issueId": "issue_012",
+        "actorId": "intern_19",
+        "actorRole": "intern",
+        "eventType": "created",
+        "content": "实习生创建轻量问题卡片。",
+        "createdAt": "2026-06-02T09:25:00+08:00"
+      },
+      {
+        "id": "event_issue_012_status",
+        "issueId": "issue_012",
+        "actorId": "system",
+        "actorRole": "system",
+        "eventType": "communication_suggested",
+        "content": "系统根据问题类型、阻塞程度和已排查时间更新问题状态。",
+        "createdAt": "2026-06-02T09:50:00+08:00"
+      }
+    ],
+    "threshold_rules": [
+      {
+        "id": "thr_technical",
+        "issueType": "technical",
+        "label": "技术实现",
+        "defaultMinutes": 90,
+        "description": "允许一定自主探索时间；若阻塞主线，可提前介入。"
+      },
+      {
+        "id": "thr_environment",
+        "issueType": "environment",
+        "label": "环境配置",
+        "defaultMinutes": 45,
+        "description": "优先查阅环境配置文档和 FAQ。"
+      },
+      {
+        "id": "thr_permission",
+        "issueType": "permission",
+        "label": "权限资源",
+        "defaultMinutes": 15,
+        "description": "通常需要接口人协助，不建议长时间自行排查。"
+      },
+      {
+        "id": "thr_business",
+        "issueType": "business",
+        "label": "业务理解",
+        "defaultMinutes": 30,
+        "description": "避免方向偏差，应较早与 Mentor 对齐。"
+      },
+      {
+        "id": "thr_other",
+        "issueType": "other",
+        "label": "其他",
+        "defaultMinutes": 60,
+        "description": "根据实际风险判断是否提前介入。"
+      }
+    ],
+    "knowledge_items": [
+      {
+        "id": "kb_01",
+        "title": "研发环境配置 FAQ",
+        "section": "3.2 数据库权限报错",
+        "reason": "适用于数据库连接失败、账号权限不足、白名单未配置等问题。",
+        "tags": [
+          "研发",
+          "数据库",
+          "权限",
+          "白名单"
+        ]
+      },
+      {
+        "id": "kb_02",
+        "title": "测试环境账号申请流程",
+        "section": "2.1 IP 白名单申请",
+        "reason": "适用于测试账号无法访问环境、权限申请入口不明确等问题。",
+        "tags": [
+          "账号",
+          "权限",
+          "环境配置"
+        ]
+      },
+      {
+        "id": "kb_03",
+        "title": "前端联调排查手册",
+        "section": "4.1 接口异常复现清单",
+        "reason": "适用于接口返回异常、联调无法稳定复现等问题。",
+        "tags": [
+          "前端",
+          "接口联调",
+          "复现"
+        ]
+      },
+      {
+        "id": "kb_04",
+        "title": "产品需求拆解指南",
+        "section": "2.3 目标用户、范围与优先级",
+        "reason": "适用于需求边界不明确、优先级判断困难等问题。",
+        "tags": [
+          "产品",
+          "需求",
+          "优先级"
+        ]
+      },
+      {
+        "id": "kb_05",
+        "title": "CRM 使用与账号权限说明",
+        "section": "1.4 新账号开通与权限校验",
+        "reason": "适用于 CRM 无法访问、客户信息录入权限不足等问题。",
+        "tags": [
+          "销售",
+          "CRM",
+          "权限"
+        ]
+      },
+      {
+        "id": "kb_06",
+        "title": "客户信息安全与合规指引",
+        "section": "3.1 客户资料使用边界",
+        "reason": "适用于客户资料敏感信息、合规边界和信息处理方式确认。",
+        "tags": [
+          "销售",
+          "客户信息",
+          "合规"
+        ]
+      },
+      {
+        "id": "kb_07",
+        "title": "运营数据口径说明",
+        "section": "2.2 常用指标与异常排查",
+        "reason": "适用于活动数据口径、报表指标定义等问题。",
+        "tags": [
+          "运营",
+          "数据",
+          "指标"
+        ]
+      }
+    ],
+    "mentor_feedback": [
+      {
+        "id": "feedback_001",
+        "mentorId": "mentor_01",
+        "internId": "intern_09",
+        "taskId": "task_09_3",
+        "content": "能够独立推进回归测试，问题记录完整。下一阶段可增加跨模块任务。",
+        "createdAt": "2026-06-01T10:00:00+08:00"
+      },
+      {
+        "id": "feedback_002",
+        "mentorId": "mentor_04",
+        "internId": "intern_12",
+        "taskId": "task_12_3",
+        "content": "需求拆解有进步，但在跨团队口径冲突时需要更早同步。",
+        "createdAt": "2026-06-01T22:00:00+08:00"
+      },
+      {
+        "id": "feedback_003",
+        "mentorId": "mentor_07",
+        "internId": "intern_20",
+        "taskId": "task_20_3",
+        "content": "客户资料整理清晰，能够主动确认下一步动作。",
+        "createdAt": "2026-06-01T06:00:00+08:00"
+      }
+    ],
+    "anomaly_events": [
+      {
+        "id": "anomaly_001",
+        "targetType": "intern",
+        "targetId": "intern_03",
+        "anomalyType": "issue_overdue",
+        "summary": "张宁的技术联调问题已超过默认沟通阈值 20 分钟，并阻塞主线任务。",
+        "status": "open",
+        "createdAt": "2026-06-02T09:40:00+08:00"
+      },
+      {
+        "id": "anomaly_002",
+        "targetType": "intern",
+        "targetId": "intern_06",
+        "anomalyType": "progress_stale",
+        "summary": "林泽连续 3 天未更新进展，建议 Mentor 确认是否存在未上报卡点。",
+        "status": "open",
+        "createdAt": "2026-06-02T09:00:00+08:00"
+      },
+      {
+        "id": "anomaly_003",
+        "targetType": "intern",
+        "targetId": "intern_14",
+        "anomalyType": "progress_stale",
+        "summary": "韩雪连续 3 天未更新进展，建议确认是否等待反馈或存在阻塞。",
+        "status": "open",
+        "createdAt": "2026-06-02T09:00:00+08:00"
+      },
+      {
+        "id": "anomaly_004",
+        "targetType": "intern",
+        "targetId": "intern_18",
+        "anomalyType": "main_task_blocked",
+        "summary": "马骁的问题涉及客户信息使用边界，已暂停操作，需要 Mentor 立即介入。",
+        "status": "open",
+        "createdAt": "2026-06-02T09:55:00+08:00"
+      },
+      {
+        "id": "anomaly_005",
+        "targetType": "department",
+        "targetId": "研发组",
+        "anomalyType": "repeated_issue_cluster",
+        "summary": "研发组多名实习生反复出现测试环境账号权限或白名单问题，建议将账号开通流程前置到 onboarding。",
+        "status": "open",
+        "createdAt": "2026-06-02T08:00:00+08:00"
+      }
+    ],
+    "issue_clusters": [
+      {
+        "id": "cluster_001",
+        "title": "测试环境账号权限与白名单问题",
+        "department": "研发组",
+        "issueIds": [
+          "issue_001",
+          "issue_006"
+        ],
+        "affectedInternCount": 2,
+        "averageBlockMinutes": 32,
+        "knowledgeGap": "现有 FAQ 有说明，但账号申请流程入口较深，白名单检查步骤不够醒目。",
+        "optimizationSuggestion": "将测试账号申请前置到入职准备阶段，并在 onboarding 清单中加入白名单检查项。",
+        "status": "demo_simulated"
+      },
+      {
+        "id": "cluster_002",
+        "title": "业务范围与优先级对齐问题",
+        "department": "产品组",
+        "issueIds": [
+          "issue_007",
+          "issue_008"
+        ],
+        "affectedInternCount": 2,
+        "averageBlockMinutes": 32,
+        "knowledgeGap": "需求拆解资料对边界确认和冲突升级的说明不足。",
+        "optimizationSuggestion": "增加需求边界确认清单，并明确何时应提前与 Mentor 对齐。",
+        "status": "demo_simulated"
+      }
+    ],
+    "hr_dashboard_snapshot": [
+      {
+        "generatedAt": "2026-06-02T10:00:00+08:00",
+        "internTotal": 20,
+        "departmentDistribution": {
+          "研发组": 9,
+          "产品组": 6,
+          "销售组": 5
+        },
+        "positionDistribution": {
+          "后端开发实习生": 4,
+          "前端开发实习生": 2,
+          "测试开发实习生": 3,
+          "产品实习生": 3,
+          "用户研究实习生": 1,
+          "产品运营实习生": 2,
+          "销售实习生": 3,
+          "销售支持实习生": 2
+        },
+        "openIssueTotal": 10,
+        "blockedMainTaskTotal": 9,
+        "nearThresholdTotal": 2,
+        "needCommunicateTotal": 2,
+        "waitingMentorTotal": 4,
+        "staleProgressInternTotal": 2,
+        "openAnomalyTotal": 5
+      }
+    ]
+  }
+}
