@@ -1,0 +1,32 @@
+idf_component_register(
+    SRCS
+        "main.c"
+        "SHT31/SHT31.c"
+        "EPD/EPD.c"
+        "BLE/ble_terminal.c"
+        "INMP441/audio_input.c"
+        "PROTOCOL/terminal_protocol.c"
+        "display/display_test.c"
+        "display/display_font.c"
+        "display/display_page.c"
+        "display/display_service.c"
+        "IR/ir_tx.c"
+    INCLUDE_DIRS
+        "."
+        "SHT31"
+        "EPD"
+        "BLE"
+        "INMP441"
+        "PROTOCOL"
+         "display"
+         "IR"
+    REQUIRES
+        esp_driver_i2c
+        esp_driver_spi
+        esp_driver_gpio
+        esp_driver_i2s
+         espressif__esp-sr
+         esp_driver_rmt
+        bt
+        nvs_flash
+)
