@@ -1,0 +1,3 @@
+student stu001 123456 ZhangSan
+student stu002 123456 LiSi
+admin admin 123456 AdminUser
