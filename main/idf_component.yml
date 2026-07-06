@@ -1,17 +1,50 @@
 ## IDF Component Manager Manifest File
 dependencies:
-  ## Required IDF version
-  idf:
-    version: '>=4.1.0'
-  # # Put list of dependencies here
-  # # For components maintained by Espressif:
-  # component: "~1.0.0"
-  # # For 3rd party components:
-  # username/component: ">=1.0.0,<2.0.0"
-  # username2/component2:
-  #   version: "~1.0.0"
-  #   # For transient dependencies `public` flag can be set.
-  #   # `public` flag doesn't have an effect dependencies of the `main` component.
-  #   # All dependencies of `main` are public by default.
-  #   public: true
-  espressif/esp-sr: ^2.4.6
+  espressif/esp_board_manager:
+    version: "^0.5.12"
+    public: true
+  espressif/esp_wifi_remote:
+    version: ">=0.10,<2.0"
+    rules:
+      - if: "target in [esp32p4]"
+  espressif/esp_hosted:
+    version: "2.12.3"
+    rules:
+      - if: "target in [esp32p4]"
+
+  app_claw:
+    path: ../../../components/common/app_claw
+
+  app_config:
+    path: ../components/app_config
+
+  captive_dns:
+    path: ../../../components/common/captive_dns
+
+  claw_ramfs:
+    path: ../../../components/claw_modules/claw_ramfs
+
+  claw_utils:
+    path: ../../../components/claw_modules/claw_utils
+
+  emote:
+    path: ../../../components/common/emote
+    rules:
+      - if: $CONFIG{ESP_BOARD_DEV_DISPLAY_LCD_SUPPORT} == True
+
+  http_reuse:
+    path: ../../../components/common/http_reuse
+
+  http_server:
+    path: ../components/http_server
+
+  settings:
+    path: ../../../components/common/settings
+
+  wifi_manager:
+    path: ../../../components/common/wifi_manager
+
+  esp_video:
+    path: ../../../components/common/esp_video
+    matches:
+    - if: $CONFIG{ESP_BOARD_DEV_CAMERA_SUPPORT} == True

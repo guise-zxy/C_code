@@ -1,466 +1,432 @@
-#include <assert.h>
-#include <math.h>
-#include <stdbool.h>
+/*
+ * SPDX-FileCopyrightText: 2026 Espressif Systems (Shanghai) CO LTD
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+#include "app_claw.h"
+#include "app_fs.h"
+#include "claw_version.h"
+#include "claw_paths.h"
+#include "edge_agent_version.h"
+#include <string.h>
+#include <stdlib.h>
 #include <stdint.h>
 #include <stdio.h>
-#include <stdlib.h>
-
+#include "wifi_manager.h"
+#include "time.h"
+#include "nvs_flash.h"
+#include "http_server.h"
+#include "esp_log.h"
+#include "esp_err.h"
+#include "esp_check.h"
+#include "esp_system.h"
+#include "esp_board_manager_includes.h"
+#include "captive_dns.h"
+#include "cmd_wifi.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
+#if CONFIG_APP_CLAW_CAP_IM_WECHAT
+#include "cap_im_wechat.h"
+#endif
+#include "app_config.h"
 
-#include "esp_err.h"
-#include "esp_log.h"
+#define APP_ENABLE_MEM_LOG        (0)
 
-#include "audio_input.h"
-#include "ir_tx.h"
+static const char *TAG = "app";
 
-// ESP-SR
-#include "esp_process_sdkconfig.h"
-#include "esp_afe_config.h"
-#include "esp_afe_sr_iface.h"
-#include "esp_afe_sr_models.h"
-#include "esp_mn_iface.h"
-#include "esp_mn_models.h"
-#include "model_path.h"
+static app_config_t *s_config;
+static app_claw_config_t *s_claw_config;
 
-static const char *TAG = "sleep_sr";
+static esp_err_t app_allocate_runtime_state(void)
+{
+    if (!s_config) {
+        s_config = calloc(1, sizeof(*s_config));
+    }
+    if (!s_claw_config) {
+        s_claw_config = calloc(1, sizeof(*s_claw_config));
+    }
 
-static const esp_afe_sr_iface_t *s_afe_handle = NULL;
-static esp_afe_sr_data_t *s_afe_data = NULL;
-static srmodel_list_t *s_models = NULL;
+    ESP_RETURN_ON_FALSE(s_config && s_claw_config, ESP_ERR_NO_MEM, TAG,
+                        "Failed to allocate runtime state");
 
-static volatile bool s_task_running = true;
-static volatile bool s_wakeup_flag = false;
+    return ESP_OK;
+}
 
-#define RMS_LOG_INTERVAL_FRAMES 50
+static void app_free_runtime_state(void)
+{
+    free(s_claw_config);
+    s_claw_config = NULL;
 
+    free(s_config);
+    s_config = NULL;
+}
 
-/**
- * R05D 临时连续测试开关：
- * - R05D_TEST_POWER_ON：每 2 秒重复发送一次开机状态帧；
- * - R05D_TEST_POWER_OFF：每 2 秒重复发送一次关机帧；
- * - R05D_TEST_DISABLED：不发送测试帧。
- *
- * 仅用于快速验证红外链路。测试完成后应恢复为按需发送。
- * 不要自动交替发送开机和关机，避免空调频繁切换状态。
- */
-#define R05D_TEST_DISABLED  0
-#define R05D_TEST_POWER_ON   1
-#define R05D_TEST_POWER_OFF  2
+static void log_wifi_startup_config(const app_config_t *config)
+{
+    ESP_LOGI(TAG,
+             "Wi-Fi startup STA: ssid=%s pwd_len=%u",
+             config->wifi_ssid[0] ? config->wifi_ssid : "(empty)",
+             (unsigned)strlen(config->wifi_password));
 
-#define R05D_TEST_ACTION R05D_TEST_DISABLED
-#define R05D_TEST_INTERVAL_MS 2000
+    ESP_LOGI(TAG,
+             "Wi-Fi startup AP: ssid=%s pwd_len=%u behavior=%s",
+             config->ap_ssid[0] ? config->ap_ssid : "(auto:mac-suffix)",
+             (unsigned)strlen(config->ap_password),
+             config->ap_behavior[0] ? config->ap_behavior : "keep");
+}
 
-#if R05D_TEST_ACTION != R05D_TEST_DISABLED
-static void ir_r05d_test_task(void *arg)
+static void on_wifi_state_changed(bool connected, void *user_ctx)
+{
+    (void)user_ctx;
+
+    wifi_manager_status_t status = {0};
+    wifi_manager_get_status(&status);
+    const char *ap_ssid = status.ap_active ? status.ap_ssid : NULL;
+
+    ESP_LOGI(TAG, "Wi-Fi state: sta_connected=%d ap_active=%d mode=%s ap_ssid=%s",
+             connected,
+             status.ap_active,
+             status.mode ? status.mode : "off",
+             ap_ssid ? ap_ssid : "(none)");
+
+    esp_err_t err = app_claw_set_network_status(connected, ap_ssid);
+    if (err != ESP_OK) {
+        ESP_LOGW(TAG, "Failed to update network emote: %s", esp_err_to_name(err));
+    }
+}
+
+static esp_err_t main_load_config(app_config_t *config)
+{
+    return app_config_load(config);
+}
+
+static esp_err_t main_save_config(const app_config_t *config)
+{
+    esp_err_t err;
+    app_claw_config_t *claw_config = NULL;
+
+    ESP_RETURN_ON_FALSE(config, ESP_ERR_INVALID_ARG, TAG, "config is NULL");
+    ESP_RETURN_ON_ERROR(app_config_validate_wifi(config, NULL), TAG, "Invalid Wi-Fi config");
+
+    err = app_config_save(config);
+    if (err != ESP_OK) {
+        return err;
+    }
+
+    claw_config = calloc(1, sizeof(*claw_config));
+    if (!claw_config) {
+        ESP_LOGW(TAG, "Failed to allocate Claw config for runtime update");
+        return ESP_OK;
+    }
+    app_config_to_claw(config, claw_config);
+    err = app_claw_update_config(claw_config);
+    free(claw_config);
+    if (err != ESP_OK && err != ESP_ERR_INVALID_STATE) {
+        ESP_LOGW(TAG, "Failed to update running Claw config: %s", esp_err_to_name(err));
+    }
+    return ESP_OK;
+}
+
+static void main_copy_claw_to_app_config(const app_claw_config_t *src, app_config_t *dst)
+{
+    strlcpy(dst->llm_api_key, src->llm_api_key, sizeof(dst->llm_api_key));
+    strlcpy(dst->llm_backend_type, src->llm_backend_type, sizeof(dst->llm_backend_type));
+    strlcpy(dst->llm_model, src->llm_model, sizeof(dst->llm_model));
+    strlcpy(dst->llm_base_url, src->llm_base_url, sizeof(dst->llm_base_url));
+    strlcpy(dst->llm_auth_type, src->llm_auth_type, sizeof(dst->llm_auth_type));
+    strlcpy(dst->llm_timeout_ms, src->llm_timeout_ms, sizeof(dst->llm_timeout_ms));
+    strlcpy(dst->llm_max_tokens, src->llm_max_tokens, sizeof(dst->llm_max_tokens));
+    strlcpy(dst->llm_default_image_max_bytes,
+            src->llm_default_image_max_bytes,
+            sizeof(dst->llm_default_image_max_bytes));
+    strlcpy(dst->llm_max_tokens_field, src->llm_max_tokens_field, sizeof(dst->llm_max_tokens_field));
+    strlcpy(dst->llm_supports_tools, src->llm_supports_tools, sizeof(dst->llm_supports_tools));
+    strlcpy(dst->llm_supports_vision, src->llm_supports_vision, sizeof(dst->llm_supports_vision));
+    strlcpy(dst->llm_image_remote_url_only,
+            src->llm_image_remote_url_only,
+            sizeof(dst->llm_image_remote_url_only));
+}
+
+static esp_err_t main_save_claw_config(const app_claw_config_t *config, void *user_ctx)
+{
+    esp_err_t err;
+    app_config_t *app_config = NULL;
+
+    (void)user_ctx;
+    ESP_RETURN_ON_FALSE(config, ESP_ERR_INVALID_ARG, TAG, "config is NULL");
+
+    app_config = calloc(1, sizeof(*app_config));
+    ESP_RETURN_ON_FALSE(app_config, ESP_ERR_NO_MEM, TAG, "Failed to allocate app config for Claw save");
+
+    err = app_config_load(app_config);
+    if (err != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to load config for Claw save: %s", esp_err_to_name(err));
+        free(app_config);
+        return err;
+    }
+    main_copy_claw_to_app_config(config, app_config);
+    err = app_config_save(app_config);
+    free(app_config);
+    return err;
+}
+
+static esp_err_t main_get_wifi_status(http_server_wifi_status_t *status)
+{
+    ESP_RETURN_ON_FALSE(status, ESP_ERR_INVALID_ARG, TAG, "status is NULL");
+
+    wifi_manager_status_t wifi_status = {0};
+    wifi_manager_get_status(&wifi_status);
+    status->wifi_connected = wifi_status.sta_connected;
+    status->ip = wifi_status.sta_ip;
+    status->ap_active = wifi_status.ap_active;
+    status->ap_ssid = wifi_status.ap_ssid;
+    status->ap_ip = wifi_status.ap_ip;
+    status->wifi_mode = wifi_status.mode;
+    return ESP_OK;
+}
+
+static void main_restart_task(void *arg)
 {
     (void)arg;
+    vTaskDelay(pdMS_TO_TICKS(500));
+    esp_restart();
+}
 
-    esp_err_t ret = ir_tx_init();
+static esp_err_t main_restart_device(void)
+{
+    BaseType_t ok = xTaskCreate(main_restart_task, "http_restart", 2048, NULL, 5, NULL);
+    ESP_RETURN_ON_FALSE(ok == pdPASS, ESP_ERR_NO_MEM, TAG, "Failed to create restart task");
+    return ESP_OK;
+}
 
-    if (ret != ESP_OK) {
-        ESP_LOGE(TAG, "ir_tx_init failed: %s", esp_err_to_name(ret));
-        vTaskDelete(NULL);
-        return;
-    }
+#if CONFIG_APP_CLAW_CAP_IM_WECHAT
+static esp_err_t main_wechat_login_start(const char *account_id, bool force)
+{
+    return cap_im_wechat_qr_login_start(account_id, force);
+}
 
-    /* 上电后稍等片刻，便于观察串口启动日志。 */
-    vTaskDelay(pdMS_TO_TICKS(1000));
+static esp_err_t main_wechat_login_get_status(http_server_wechat_login_status_t *status)
+{
+    esp_err_t ret = ESP_OK;
+    cap_im_wechat_qr_login_status_t *raw = NULL;
 
-    TickType_t last_wake_time = xTaskGetTickCount();
-    uint32_t send_count = 0;
+    ESP_RETURN_ON_FALSE(status, ESP_ERR_INVALID_ARG, TAG, "status is NULL");
 
-    while (true) {
-        if (R05D_TEST_ACTION == R05D_TEST_POWER_ON) {
-            ESP_LOGI(TAG, "Sending Midea R05D POWER ON test: cool mode, auto fan, 25 C");
-            ret = ir_tx_send_midea_power_on_test();
-        } else if (R05D_TEST_ACTION == R05D_TEST_POWER_OFF) {
-            ESP_LOGI(TAG, "Sending Midea R05D POWER OFF test");
-            ret = ir_tx_send_midea_power_off();
-        } else {
-            ESP_LOGI(TAG, "R05D test disabled");
-            vTaskDelete(NULL);
-            return;
-        }
+    raw = calloc(1, sizeof(*raw));
+    ESP_RETURN_ON_FALSE(raw, ESP_ERR_NO_MEM, TAG, "Failed to allocate login status");
 
-        if (ret != ESP_OK) {
-            ESP_LOGE(TAG, "R05D test transmit failed: %s", esp_err_to_name(ret));
-        } else {
-            send_count++;
-            ESP_LOGI(TAG, "R05D periodic test sent: count=%lu", (unsigned long)send_count);
-        }
+    ESP_GOTO_ON_ERROR(cap_im_wechat_qr_login_get_status(raw), cleanup, TAG,
+                      "Failed to query WeChat login status");
 
-        /* 保持约每 2 秒发送一次，而不是“发送完成后再额外等待 2 秒”。 */
-        vTaskDelayUntil(&last_wake_time, pdMS_TO_TICKS(R05D_TEST_INTERVAL_MS));
-    }
+    memset(status, 0, sizeof(*status));
+    status->active = raw->active;
+    status->configured = raw->configured;
+    status->completed = raw->completed;
+    status->persisted = raw->persisted;
+    strlcpy(status->session_key, raw->session_key, sizeof(status->session_key));
+    strlcpy(status->status, raw->status, sizeof(status->status));
+    strlcpy(status->message, raw->message, sizeof(status->message));
+    strlcpy(status->qr_data_url, raw->qr_data_url, sizeof(status->qr_data_url));
+    strlcpy(status->account_id, raw->account_id, sizeof(status->account_id));
+    strlcpy(status->user_id, raw->user_id, sizeof(status->user_id));
+    strlcpy(status->token, raw->token, sizeof(status->token));
+    strlcpy(status->base_url, raw->base_url, sizeof(status->base_url));
+
+cleanup:
+    free(raw);
+    return ret;
+}
+
+static esp_err_t main_wechat_login_cancel(void)
+{
+    return cap_im_wechat_qr_login_cancel();
+}
+
+static esp_err_t main_wechat_login_mark_persisted(void)
+{
+    return cap_im_wechat_qr_login_mark_persisted();
 }
 #endif
 
-#define VOICE_CMD_AC_POWER_ON  0
-#define VOICE_CMD_AC_POWER_OFF 1
+static esp_err_t init_nvs(void)
+{
+    esp_err_t err = nvs_flash_init();
+    if (err == ESP_ERR_NVS_NO_FREE_PAGES || err == ESP_ERR_NVS_NEW_VERSION_FOUND) {
+        ESP_ERROR_CHECK(nvs_flash_erase());
+        err = nvs_flash_init();
+    }
+    return err;
+}
 
-static void handle_voice_command(int command_id)
+static esp_err_t init_timezone(const char *timezone)
 {
     esp_err_t ret = ESP_OK;
 
-    switch (command_id) {
-        case VOICE_CMD_AC_POWER_ON:
-            ESP_LOGI(TAG, "[VOICE CMD] AC power on");
-            ret = ir_tx_send_midea_power_on_test();
-            break;
+    ESP_GOTO_ON_FALSE(timezone && timezone[0] != '\0', ESP_ERR_INVALID_ARG, tz_default, TAG,
+                      "Timezone is empty.");
+    ESP_GOTO_ON_FALSE(setenv("TZ", timezone, 1) == 0, ESP_FAIL, tz_default, TAG,
+                      "Failed to set TZ env");
+    tzset();
+    ESP_LOGI(TAG, "Timezone set to %s", timezone);
+    return ESP_OK;
 
-        case VOICE_CMD_AC_POWER_OFF:
-            ESP_LOGI(TAG, "[VOICE CMD] AC power off");
-            ret = ir_tx_send_midea_power_off();
-            break;
-
-        default:
-            ESP_LOGW(TAG, "[VOICE CMD] Unbound command_id=%d", command_id);
-            return;
-    }
-
-    if (ret != ESP_OK) {
-        ESP_LOGE(TAG, "[VOICE CMD] IR transmit failed: %s", esp_err_to_name(ret));
-        return;
-    }
-
-    ESP_LOGI(TAG, "[VOICE CMD] IR transmit done");
+tz_default:
+    assert(setenv("TZ", "CST-8", 1) == 0);
+    tzset();
+    ESP_LOGI(TAG, "Timezone set to default: CST-8");
+    return ret;
 }
 
-/**
- * 用于确认音频仍然正常进入 ESP-SR。
- * 不参与识别逻辑，只做低频调试输出。
- */
-static int calculate_rms(const int16_t *buffer, size_t sample_count)
+#if APP_ENABLE_MEM_LOG
+
+static void print_task_stack_info(void)
 {
-    if (buffer == NULL || sample_count == 0) {
-        return 0;
+#ifdef CONFIG_FREERTOS_GENERATE_RUN_TIME_STATS
+    static TaskStatus_t s_task_status_snapshot[24];
+    UBaseType_t count = uxTaskGetSystemState(s_task_status_snapshot,
+                                             sizeof(s_task_status_snapshot) / sizeof(s_task_status_snapshot[0]),
+                                             NULL);
+
+    for (UBaseType_t i = 0; i < count; i++) {
+        ESP_LOGI(TAG,
+                 "Task %s  %u",
+                 s_task_status_snapshot[i].pcTaskName,
+                 s_task_status_snapshot[i].usStackHighWaterMark);
     }
-
-    int64_t sum_sq = 0;
-
-    for (size_t i = 0; i < sample_count; i++) {
-        int32_t sample = buffer[i];
-        sum_sq += (int64_t)sample * sample;
-    }
-
-    return (int)sqrt((double)sum_sq / sample_count);
+#endif
 }
 
-/**
- * 音频采集任务：
- * INMP441 → PCM16 → AFE feed()
- */
-static void feed_task(void *arg)
+/* Periodic task: print internal free, minimum free, and PSRAM free every 20s */
+static void memory_monitor_task(void *arg)
 {
-    esp_afe_sr_data_t *afe_data = (esp_afe_sr_data_t *)arg;
-
-    const int feed_chunksize = s_afe_handle->get_feed_chunksize(afe_data);
-    const int feed_channel_num = s_afe_handle->get_feed_channel_num(afe_data);
-
-    ESP_LOGI(
-        TAG,
-        "AFE feed started: chunk=%d, channels=%d",
-        feed_chunksize,
-        feed_channel_num
-    );
-
-    /*
-     * 当前使用一个 INMP441，因此 input_format = "M"，
-     * AFE 应要求一个输入通道。
-     */
-    if (feed_channel_num != 1) {
-        ESP_LOGE(
-            TAG,
-            "Expected one microphone channel, but AFE requested %d channels",
-            feed_channel_num
-        );
-        vTaskDelete(NULL);
-        return;
+    (void)arg;
+    while (1) {
+        vTaskDelay(pdMS_TO_TICKS(5000));
+        size_t internal_free = heap_caps_get_free_size(MALLOC_CAP_INTERNAL);
+        size_t internal_min = heap_caps_get_minimum_free_size(MALLOC_CAP_INTERNAL);
+        size_t psram_free = heap_caps_get_free_size(MALLOC_CAP_SPIRAM);
+        ESP_LOGI(TAG, "Memory: internal_free=%u bytes, internal_min_free=%u bytes, psram_free=%u bytes",
+                 (unsigned)internal_free, (unsigned)internal_min, (unsigned)psram_free);
+        print_task_stack_info();
     }
-
-    int16_t *pcm_buffer =
-        (int16_t *)malloc(feed_chunksize * sizeof(int16_t));
-
-    assert(pcm_buffer != NULL);
-
-    uint32_t frame_count = 0;
-
-    while (s_task_running) {
-        size_t samples_read = 0;
-
-        esp_err_t ret = audio_input_read_pcm16(
-            pcm_buffer,
-            feed_chunksize,
-            &samples_read
-        );
-
-        if (ret != ESP_OK) {
-            ESP_LOGE(TAG, "audio_input_read_pcm16 failed: %s", esp_err_to_name(ret));
-            vTaskDelay(pdMS_TO_TICKS(10));
-            continue;
-        }
-
-        if (samples_read != (size_t)feed_chunksize) {
-            ESP_LOGW(
-                TAG,
-                "short PCM read: expected=%d, actual=%u",
-                feed_chunksize,
-                (unsigned)samples_read
-            );
-            continue;
-        }
-
-        /*
-         * 每隔一段时间打印一次 RMS，确认录音仍然正常。
-         * 说话时，数值应明显高于静音状态。
-         */
-        frame_count++;
-
-        if (frame_count % RMS_LOG_INTERVAL_FRAMES == 0) {
-            ESP_LOGI(TAG, "AFE input rms = %d", calculate_rms(pcm_buffer, samples_read));
-        }
-
-        s_afe_handle->feed(afe_data, pcm_buffer);
-    }
-
-    free(pcm_buffer);
-    vTaskDelete(NULL);
 }
 
-/**
- * 检测任务：
- * AFE fetch() → WakeNet → MultiNet
- */
-static void detect_task(void *arg)
-{
-    esp_afe_sr_data_t *afe_data = (esp_afe_sr_data_t *)arg;
-
-    const int afe_chunksize = s_afe_handle->get_fetch_chunksize(afe_data);
-
-    char *mn_name =
-        esp_srmodel_filter(s_models, ESP_MN_PREFIX, ESP_MN_CHINESE);
-
-    if (mn_name == NULL) {
-        ESP_LOGE(TAG, "No Chinese MultiNet model found");
-        vTaskDelete(NULL);
-        return;
-    }
-
-    ESP_LOGI(TAG, "MultiNet model: %s", mn_name);
-
-    esp_mn_iface_t *multinet = esp_mn_handle_from_name(mn_name);
-
-    if (multinet == NULL) {
-        ESP_LOGE(TAG, "esp_mn_handle_from_name failed");
-        vTaskDelete(NULL);
-        return;
-    }
-
-    model_iface_data_t *model_data = multinet->create(mn_name, 6000);
-
-    if (model_data == NULL) {
-        ESP_LOGE(TAG, "MultiNet create failed");
-        vTaskDelete(NULL);
-        return;
-    }
-
-    /*
-     * 从 menuconfig 载入固定中文命令词。
-     */
-  esp_mn_commands_update_from_sdkconfig(multinet, model_data);
-
-    const int mn_chunksize = multinet->get_samp_chunksize(model_data);
-
-    ESP_LOGI(
-        TAG,
-        "AFE fetch chunk=%d, MultiNet chunk=%d",
-        afe_chunksize,
-        mn_chunksize
-    );
-
-    assert(mn_chunksize == afe_chunksize);
-
-    multinet->print_active_speech_commands(model_data);
-
-    ESP_LOGI(TAG, "Detection started. Say wake word first.");
-
-    while (s_task_running) {
-        afe_fetch_result_t *result = s_afe_handle->fetch(afe_data);
-
-        if (result == NULL || result->ret_value == ESP_FAIL) {
-            ESP_LOGE(TAG, "AFE fetch failed");
-            break;
-        }
-
-        if (result->wakeup_state == WAKENET_DETECTED) {
-            ESP_LOGI(TAG, "WAKEWORD DETECTED");
-            multinet->clean(model_data);
-        }
-
-        /*
-         * 单麦克风场景：检测到 WakeNet 后即可进入命令词识别。
-         */
-        if (
-            result->raw_data_channels == 1 &&
-            result->wakeup_state == WAKENET_DETECTED
-        ) {
-            s_wakeup_flag = true;
-            ESP_LOGI(TAG, "Listening for speech command...");
-        }
-
-        /*
-         * 双麦场景以后才会用到：
-         * 需要等待通道验证完成。
-         */
-        if (
-            result->raw_data_channels > 1 &&
-            result->wakeup_state == WAKENET_CHANNEL_VERIFIED
-        ) {
-            s_wakeup_flag = true;
-
-            ESP_LOGI(
-                TAG,
-                "WakeNet channel verified: channel=%d",
-                result->trigger_channel_id
-            );
-        }
-
-        if (!s_wakeup_flag) {
-            continue;
-        }
-
-        esp_mn_state_t mn_state =
-            multinet->detect(model_data, result->data);
-
-        if (mn_state == ESP_MN_STATE_DETECTING) {
-            continue;
-        }
-
-        if (mn_state == ESP_MN_STATE_DETECTED) {
-            esp_mn_results_t *mn_result =
-                multinet->get_results(model_data);
-
-            if (mn_result != NULL) {
-                for (int i = 0; i < mn_result->num; i++) {
-                    ESP_LOGI(
-                        TAG,
-                        "TOP %d: command_id=%d, phrase_id=%d, string=%s, prob=%f",
-                        i + 1,
-                        mn_result->command_id[i],
-                        mn_result->phrase_id[i],
-                        mn_result->string,
-                        mn_result->prob[i]
-                    );
-                }
-
-                if (mn_result->num > 0) {
-                    handle_voice_command(mn_result->command_id[0]);
-                    multinet->clean(model_data);
-                    s_afe_handle->enable_wakenet(afe_data);
-                    s_wakeup_flag = false;
-                    ESP_LOGI(TAG, "Command handled. Waiting for wake word.");
-                    continue;
-                }
-            }
-
-            ESP_LOGI(TAG, "Still listening until timeout...");
-        }
-
-        if (mn_state == ESP_MN_STATE_TIMEOUT) {
-            ESP_LOGI(TAG, "MultiNet timeout. Waiting for wake word.");
-
-            s_afe_handle->enable_wakenet(afe_data);
-            s_wakeup_flag = false;
-        }
-    }
-
-    multinet->destroy(model_data);
-    vTaskDelete(NULL);
-}
+#endif
 
 void app_main(void)
 {
-    ESP_LOGI(TAG, "Sleep Agent voice-controlled IR start");
+    esp_log_level_set("esp-x509-crt-bundle", ESP_LOG_WARN);
+    esp_log_level_set("http_reuse", ESP_LOG_WARN);
 
-    ESP_ERROR_CHECK(ir_tx_init());
+    ESP_LOGI(TAG, "Starting app");
+    ESP_LOGI(TAG, "ESP-Claw version: %s", claw_get_version());
+    ESP_LOGI(TAG, "ESP-Claw git version: %s", claw_get_git_version());
+    ESP_LOGI(TAG, "Edge Agent version: %s", edge_agent_get_version());
+    ESP_ERROR_CHECK(app_allocate_runtime_state());
+    ESP_ERROR_CHECK(init_nvs());
+    ESP_ERROR_CHECK(app_config_init());
+    ESP_ERROR_CHECK(app_config_load(s_config));
+    app_config_to_claw(s_config, s_claw_config);
+    init_timezone(app_config_get_timezone(s_config)); // no need to check error
+    ESP_ERROR_CHECK(esp_board_manager_init());
+    ESP_ERROR_CHECK(app_claw_ui_start());
+    ESP_ERROR_CHECK(app_fs_init());
 
-    /*
-     * 已经单独验证通过：
-     * INMP441 → I2S → PCM16
-     */
-    ESP_ERROR_CHECK(audio_input_init());
+    /* Publish the resolved storage roots so any component can compose paths
+     * without knowing whether data lives on flash or an SD card. */
+    ESP_ERROR_CHECK(claw_paths_set(CLAW_PATH_DATA, app_fs_storage_base_path()));
+    ESP_ERROR_CHECK(claw_paths_set(CLAW_PATH_SYSTEM, app_fs_system_base_path()));
 
-    /*
-     * 从 model 分区读取 menuconfig 中选择的模型。
-     */
-    s_models = esp_srmodel_init("model");
+    ESP_ERROR_CHECK(wifi_manager_init());
+    ESP_ERROR_CHECK(http_server_init(&(http_server_config_t) {
+        .storage_base_path = app_fs_storage_base_path(),
+        .services = {
+            .load_config = main_load_config,
+            .save_config = main_save_config,
+            .get_wifi_status = main_get_wifi_status,
+            .restart_device = main_restart_device,
+#if CONFIG_APP_CLAW_CAP_IM_WECHAT
+            .wechat_login_start = main_wechat_login_start,
+            .wechat_login_get_status = main_wechat_login_get_status,
+            .wechat_login_cancel = main_wechat_login_cancel,
+            .wechat_login_mark_persisted = main_wechat_login_mark_persisted,
+#endif
+        },
+    }));
+    ESP_ERROR_CHECK(wifi_manager_register_state_callback(on_wifi_state_changed, NULL));
 
-    if (s_models == NULL) {
-        ESP_LOGE(
-            TAG,
-            "esp_srmodel_init failed. Check partitions.csv and full flash."
-        );
-        return;
+    log_wifi_startup_config(s_config);
+
+    esp_err_t wifi_err = wifi_manager_start(&(wifi_manager_config_t) {
+        .sta_ssid = s_config->wifi_ssid,
+        .sta_password = s_config->wifi_password,
+        .ap_ssid = s_config->ap_ssid[0] ? s_config->ap_ssid : NULL,
+        .ap_password = s_config->ap_password[0] ? s_config->ap_password : NULL,
+        .ap_behavior = s_config->ap_behavior,
+    });
+    if (wifi_err != ESP_OK) {
+        ESP_LOGE(TAG, "Wi-Fi start failed: %s", esp_err_to_name(wifi_err));
+    } else {
+        ESP_ERROR_CHECK(http_server_start());
+        if (captive_dns_start(&(captive_dns_config_t) {
+                .ap_netif = wifi_manager_get_ap_netif(),
+                .configure_dhcp_dns = true,
+            }) != ESP_OK) {
+            ESP_LOGW(TAG, "Captive DNS could not start, portal pop-up disabled");
+        }
+
+        if (s_config->wifi_ssid[0] != '\0') {
+            esp_err_t wait_err = wifi_manager_wait_connected(30000);
+            if (wait_err == ESP_OK) {
+                wifi_manager_status_t status = {0};
+                wifi_manager_get_status(&status);
+                ESP_LOGI(TAG, "Wi-Fi STA ready: %s", status.sta_ip);
+            } else if (wait_err == ESP_FAIL) {
+                wifi_manager_status_t status = {0};
+                wifi_manager_get_status(&status);
+                ESP_LOGW(TAG,
+                         "Wi-Fi STA failed after retries: mode=%s ap_active=%d ap_ip=%s",
+                         status.mode ? status.mode : "off",
+                         status.ap_active,
+                         status.ap_ip ? status.ap_ip : "0.0.0.0");
+            } else if (wait_err == ESP_ERR_TIMEOUT) {
+                wifi_manager_status_t status = {0};
+                wifi_manager_get_status(&status);
+                ESP_LOGW(TAG,
+                         "Wi-Fi STA wait timeout: mode=%s ap_active=%d sta_configured=%d",
+                         status.mode ? status.mode : "off",
+                         status.ap_active,
+                         status.sta_configured);
+            } else {
+                ESP_LOGW(TAG, "Wi-Fi STA wait returned error: %s", esp_err_to_name(wait_err));
+            }
+        }
+
+        wifi_manager_status_t status = {0};
+        wifi_manager_get_status(&status);
+        if (status.ap_active) {
+            const char *portal_auth = s_config->ap_password[0] ? "wpa2" : "open";
+            ESP_LOGW(TAG,
+                     "*** Provisioning portal: SSID=\"%s\" (auth=%s) IP=%s URL=http://%s/ ***",
+                     status.ap_ssid,
+                     portal_auth,
+                     status.ap_ip,
+                     status.ap_ip);
+        }
     }
 
-    /*
-     * M = 单个麦克风通道。
-     * 当前没有扬声器播放参考通道，因此不使用 R。
-     */
-    afe_config_t *afe_config = afe_config_init(
-        "M",
-        s_models,
-        AFE_TYPE_SR,
-        AFE_MODE_LOW_COST
-    );
+    ESP_ERROR_CHECK(app_claw_set_save_config_callback(main_save_claw_config, NULL));
+    ESP_ERROR_CHECK(app_claw_start(s_claw_config));
+#if CONFIG_APP_CLAW_CAP_IM_LOCAL
+    ESP_ERROR_CHECK(http_server_webim_bind_im());
+#endif
 
-    if (afe_config == NULL) {
-        ESP_LOGE(TAG, "afe_config_init failed");
-        return;
-    }
+    register_wifi_command();
 
-    s_afe_handle = esp_afe_handle_from_config(afe_config);
+#if APP_ENABLE_MEM_LOG
+    /* Start memory monitor: print internal free, min free, PSRAM free every 20s */
+    xTaskCreate(memory_monitor_task, "mem_mon", 4096, NULL, 1, NULL);
+#endif
 
-    if (s_afe_handle == NULL) {
-        ESP_LOGE(TAG, "esp_afe_handle_from_config failed");
-        afe_config_free(afe_config);
-        return;
-    }
-
-    s_afe_data = s_afe_handle->create_from_config(afe_config);
-
-    afe_config_free(afe_config);
-
-    if (s_afe_data == NULL) {
-        ESP_LOGE(TAG, "AFE create_from_config failed");
-        return;
-    }
-
-    BaseType_t detect_created = xTaskCreatePinnedToCore(
-        detect_task,
-        "sr_detect",
-        8 * 1024,
-        s_afe_data,
-        5,
-        NULL,
-        1
-    );
-
-    BaseType_t feed_created = xTaskCreatePinnedToCore(
-        feed_task,
-        "sr_feed",
-        8 * 1024,
-        s_afe_data,
-        5,
-        NULL,
-        0
-    );
-
-    if (detect_created != pdPASS || feed_created != pdPASS) {
-        ESP_LOGE(TAG, "Failed to create ESP-SR tasks");
-        return;
-    }
-
-    ESP_LOGI(TAG, "ESP-SR tasks created");
+    app_free_runtime_state();
 }
