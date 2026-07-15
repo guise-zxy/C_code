@@ -1,0 +1,40 @@
+Task4 mmap performance experiment PID: 8383
+
+[before read]
+PID=8383, collect /proc/8383/maps and /proc/8383/status, then press Enter ...
+
+[COLLECT task4-00]
+VmSize:	    2432 kB
+VmRSS:	    1316 kB
+VmData:	     228 kB
+VmStk:	     132 kB
+read lines=1000000 elapsed=0.059699 sec
+
+[after read before mmap]
+PID=8383, collect /proc/8383/maps and /proc/8383/status, then press Enter ...
+
+[COLLECT task4-01]
+VmSize:	    2432 kB
+VmRSS:	    1444 kB
+VmData:	     228 kB
+VmStk:	     132 kB
+mapped file size: 49888896 bytes, addr=0x7fde37000000
+
+[after mmap before scanning]
+PID=8383, collect /proc/8383/maps and /proc/8383/status, then press Enter ...
+
+[COLLECT task4-02]
+VmSize:	   51152 kB
+VmRSS:	    1444 kB
+VmData:	     228 kB
+VmStk:	     132 kB
+mmap lines=1000000 elapsed=0.050456 sec
+
+[after mmap scanning]
+PID=8383, collect /proc/8383/maps and /proc/8383/status, then press Enter ...
+
+[COLLECT task4-03]
+VmSize:	    2432 kB
+VmRSS:	    1444 kB
+VmData:	     228 kB
+VmStk:	     132 kB

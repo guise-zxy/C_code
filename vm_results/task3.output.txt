@@ -1,0 +1,120 @@
+Task3 allocation experiment PID: 8379
+
+[initial]
+PID=8379, press Enter after collecting /proc/8379/maps and /proc/8379/status ...
+
+[COLLECT task3-00]
+VmSize:	    2432 kB
+VmRSS:	    1396 kB
+VmData:	     228 kB
+VmStk:	     132 kB
+block[1] 128MB at 0x7fb32a3d0010
+
+[after allocating one 128MB block]
+PID=8379, press Enter after collecting /proc/8379/maps and /proc/8379/status ...
+
+[COLLECT task3-01]
+VmSize:	  133508 kB
+VmRSS:	  132468 kB
+VmData:	  131304 kB
+VmStk:	     132 kB
+block[2] 128MB at 0x7fb3223cf010
+
+[after allocating one 128MB block]
+PID=8379, press Enter after collecting /proc/8379/maps and /proc/8379/status ...
+
+[COLLECT task3-02]
+VmSize:	  264584 kB
+VmRSS:	  263540 kB
+VmData:	  262380 kB
+VmStk:	     132 kB
+block[3] 128MB at 0x7fb31a3ce010
+
+[after allocating one 128MB block]
+PID=8379, press Enter after collecting /proc/8379/maps and /proc/8379/status ...
+
+[COLLECT task3-03]
+VmSize:	  395660 kB
+VmRSS:	  394612 kB
+VmData:	  393456 kB
+VmStk:	     132 kB
+block[4] 128MB at 0x7fb3123cd010
+
+[after allocating one 128MB block]
+PID=8379, press Enter after collecting /proc/8379/maps and /proc/8379/status ...
+
+[COLLECT task3-04]
+VmSize:	  526736 kB
+VmRSS:	  525684 kB
+VmData:	  524532 kB
+VmStk:	     132 kB
+block[5] 128MB at 0x7fb30a3cc010
+
+[after allocating one 128MB block]
+PID=8379, press Enter after collecting /proc/8379/maps and /proc/8379/status ...
+
+[COLLECT task3-05]
+VmSize:	  657812 kB
+VmRSS:	  656756 kB
+VmData:	  655608 kB
+VmStk:	     132 kB
+block[6] 128MB at 0x7fb3023cb010
+
+[after allocating one 128MB block]
+PID=8379, press Enter after collecting /proc/8379/maps and /proc/8379/status ...
+
+[COLLECT task3-06]
+VmSize:	  788888 kB
+VmRSS:	  787828 kB
+VmData:	  786684 kB
+VmStk:	     132 kB
+freed block[2]
+
+[after freeing block 2]
+PID=8379, press Enter after collecting /proc/8379/maps and /proc/8379/status ...
+
+[COLLECT task3-07]
+VmSize:	  657812 kB
+VmRSS:	  656756 kB
+VmData:	  655608 kB
+VmStk:	     132 kB
+freed block[3]
+
+[after freeing block 3]
+PID=8379, press Enter after collecting /proc/8379/maps and /proc/8379/status ...
+
+[COLLECT task3-08]
+VmSize:	  526736 kB
+VmRSS:	  525684 kB
+VmData:	  524532 kB
+VmStk:	     132 kB
+freed block[5]
+
+[after freeing block 5]
+PID=8379, press Enter after collecting /proc/8379/maps and /proc/8379/status ...
+
+[COLLECT task3-09]
+VmSize:	  395660 kB
+VmRSS:	  394612 kB
+VmData:	  393456 kB
+VmStk:	     132 kB
+big 1024MB at 0x7fb2c23ca010
+
+[after allocating 1024MB]
+PID=8379, press Enter after collecting /proc/8379/maps and /proc/8379/status ...
+
+[COLLECT task3-10]
+VmSize:	 1444240 kB
+VmRSS:	  962248 kB
+VmData:	 1442036 kB
+VmStk:	     132 kB
+small 64MB at 0x7fb3263cf010
+
+[after allocating 64MB]
+PID=8379, press Enter after collecting /proc/8379/maps and /proc/8379/status ...
+
+[COLLECT task3-11]
+VmSize:	 1509780 kB
+VmRSS:	  998492 kB
+VmData:	 1507576 kB
+VmStk:	     132 kB

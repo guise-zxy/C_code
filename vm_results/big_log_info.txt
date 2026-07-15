@@ -1,0 +1,2 @@
+-rw-r--r--. 1 root root 48M  6月 3日 20:16 /root/oslab3_codex/big_log.dat
+1000000 /root/oslab3_codex/big_log.dat

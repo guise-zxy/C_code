@@ -1,0 +1,25 @@
+00400000-00401000 r--p 00000000 fd:00 2131359                            /root/oslab3_codex/task4_mmap_perf
+00401000-00402000 r-xp 00001000 fd:00 2131359                            /root/oslab3_codex/task4_mmap_perf
+00402000-00403000 r--p 00002000 fd:00 2131359                            /root/oslab3_codex/task4_mmap_perf
+00403000-00404000 r--p 00002000 fd:00 2131359                            /root/oslab3_codex/task4_mmap_perf
+00404000-00405000 rw-p 00003000 fd:00 2131359                            /root/oslab3_codex/task4_mmap_perf
+3b09b000-3b0bc000 rw-p 00000000 00:00 0                                  [heap]
+7fde37000000-7fde39f94000 r--p 00000000 fd:00 2131364                    /root/oslab3_codex/big_log.dat
+7fde3a0b3000-7fde3a0b6000 rw-p 00000000 00:00 0 
+7fde3a0b6000-7fde3a27b000 r-xp 00000000 fd:00 1312612                    /usr/lib64/libc.so.6
+7fde3a27b000-7fde3a27f000 r--p 001c5000 fd:00 1312612                    /usr/lib64/libc.so.6
+7fde3a27f000-7fde3a281000 rw-p 001c9000 fd:00 1312612                    /usr/lib64/libc.so.6
+7fde3a281000-7fde3a28e000 rw-p 00000000 00:00 0 
+7fde3a2a4000-7fde3a2a5000 r--p 00000000 fd:00 1444362                    /usr/libexec/coreutils/libstdbuf.so
+7fde3a2a5000-7fde3a2a6000 r-xp 00001000 fd:00 1444362                    /usr/libexec/coreutils/libstdbuf.so
+7fde3a2a6000-7fde3a2a7000 r--p 00002000 fd:00 1444362                    /usr/libexec/coreutils/libstdbuf.so
+7fde3a2a7000-7fde3a2a8000 r--p 00002000 fd:00 1444362                    /usr/libexec/coreutils/libstdbuf.so
+7fde3a2a8000-7fde3a2a9000 rw-p 00003000 fd:00 1444362                    /usr/libexec/coreutils/libstdbuf.so
+7fde3a2a9000-7fde3a2ab000 rw-p 00000000 00:00 0 
+7fde3a2ab000-7fde3a2d8000 r-xp 00000000 fd:00 1312609                    /usr/lib64/ld-linux-x86-64.so.2
+7fde3a2d8000-7fde3a2da000 r--p 0002d000 fd:00 1312609                    /usr/lib64/ld-linux-x86-64.so.2
+7fde3a2da000-7fde3a2dc000 rw-p 0002f000 fd:00 1312609                    /usr/lib64/ld-linux-x86-64.so.2
+7fff27ee5000-7fff27f06000 rw-p 00000000 00:00 0                          [stack]
+7fff27f64000-7fff27f68000 r--p 00000000 00:00 0                          [vvar]
+7fff27f68000-7fff27f6a000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]

@@ -1,0 +1,8 @@
+PID:8377
+使用 cat /proc/8377/maps 查看内存分配
+
+[COLLECT task1-00]
+VmSize:	    2432 kB
+VmRSS:	    1432 kB
+VmData:	     228 kB
+VmStk:	     132 kB

@@ -1,0 +1,91 @@
+Process ID:8378
+Below are address of types of process's mem
+Please mark the interval positions of the addresses of the following variables in the maps file
+====================================================
+Code Location:
+	Address of main (Code Segment) : 0x4011f6 
+====================================================
+====================================================
+Stack Location
+	The address of Stack_var0 : 0x7ffff5eaa48c
+	The address of Stack_var1 : 0x7ffff5eaa488
+====================================================
+====================================================
+BSS Location:
+	Address of bss_var : 0x404094
+Data Location:
+	Address of global data(Data Segment) : 0x404080
+	New end of static data(Data Segment) : 0x404084
+====================================================
+Please check /proc/8378/maps after Free heap to check the change, press Enter to continue!
+
+[COLLECT task2-00]
+VmSize:	    2432 kB
+VmRSS:	    1444 kB
+VmData:	     228 kB
+VmStk:	     132 kB
+====================================================
+Heap Location:
+	Address of heap_var2 is 0x7ff016144010
+Please check /proc/8378/maps file to check the change, press Enter to continue!
+
+[COLLECT task2-01]
+VmSize:	    3460 kB
+VmRSS:	    1448 kB
+VmData:	    1256 kB
+VmStk:	     132 kB
+Please check /proc/8378/maps to check the change, press Enter to continue!
+File Map Location!
+	Mapped area started by addr:0x7ff016435000:
+	The original info of file are as below:
+Modify map-file content !	Please check /proc/8378/maps file to check the map 
+
+[COLLECT task2-02]
+VmSize:	    2436 kB
+VmRSS:	    1448 kB
+VmData:	     228 kB
+VmStk:	     132 kB
+====================================================
+Recursion Call Location:
+	Level 1: n location 0x7ffff5e6a48c
+
+[COLLECT task2-03]
+VmSize:	    2568 kB
+VmRSS:	    1452 kB
+VmData:	     228 kB
+VmStk:	     268 kB
+	Level 2: n location 0x7ffff5e2a46c
+
+[COLLECT task2-04]
+VmSize:	    2824 kB
+VmRSS:	    1460 kB
+VmData:	     228 kB
+VmStk:	     524 kB
+	Level 3: n location 0x7ffff5dea44c
+
+[COLLECT task2-05]
+VmSize:	    3080 kB
+VmRSS:	    1468 kB
+VmData:	     228 kB
+VmStk:	     780 kB
+	Level 3: n location 0x7ffff5dea44c
+
+[COLLECT task2-06]
+VmSize:	    3080 kB
+VmRSS:	    1468 kB
+VmData:	     228 kB
+VmStk:	     780 kB
+	Level 2: n location 0x7ffff5e2a46c
+
+[COLLECT task2-07]
+VmSize:	    3080 kB
+VmRSS:	    1468 kB
+VmData:	     228 kB
+VmStk:	     780 kB
+	Level 1: n location 0x7ffff5e6a48c
+
+[COLLECT task2-08]
+VmSize:	    3080 kB
+VmRSS:	    1468 kB
+VmData:	     228 kB
+VmStk:	     780 kB
