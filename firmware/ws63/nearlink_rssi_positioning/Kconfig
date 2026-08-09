@@ -1,0 +1,50 @@
+#===============================================================================
+# @brief    Kconfig for the NearLink RSSI positioning application.
+#===============================================================================
+
+menu "NearLink RSSI Positioning"
+
+choice
+    prompt "Select the single-anchor SLE role"
+    optional
+
+config NEARLINK_RSSI_POSITIONING_MIN_SERVER
+    bool "Enable the minimal single-anchor SLE Server"
+    help
+        Build the first project slice: a connectable single-anchor Server that
+        advertises as "sle_rssi_server" for compatibility with the official
+        sle_rssi_ranging Client. Do not enable a sample Client in the same
+        firmware image.
+
+config NEARLINK_RSSI_POSITIONING_RSSI_CLIENT
+    bool "Enable the single-anchor SLE RSSI Client"
+    help
+        Build the project-owned copy of the official sle_rssi_ranging Client.
+        It scans for "sle_rssi_server", connects, reads RSSI periodically and
+        retains the official GPIO13, LED and NV calibration behavior.
+
+endchoice
+
+if NEARLINK_RSSI_POSITIONING_RSSI_CLIENT
+
+config NEARLINK_RSSI_POSITIONING_RSSI_AT_1M
+    int "Calibrated RSSI at 1 metre (dBm)"
+    range -100 -20
+    default -45
+
+config NEARLINK_RSSI_POSITIONING_PATH_LOSS_TENTHS
+    int "Path loss exponent multiplied by 10"
+    range 10 60
+    default 20
+
+endif
+
+endmenu
+
+config SUPPORT_SLE_PERIPHERAL
+    bool
+    default y if NEARLINK_RSSI_POSITIONING_MIN_SERVER
+
+config SUPPORT_SLE_CENTRAL
+    bool
+    default y if NEARLINK_RSSI_POSITIONING_RSSI_CLIENT
