@@ -1,0 +1,15 @@
+{
+  "case5_exchange_loss_threshold": {
+    "no_retest_known_good": 10.526315789473646,
+    "retest_known_good": 10.526315789473646
+  },
+  "case6_synced_defect_rate_threshold": {
+    "no_retest_known_good": 0.05882352941084902,
+    "retest_known_good": 0.05882352941084902
+  },
+  "interpretation": {
+    "case5": "Above the threshold, final product inspection (0,1,1,0) overtakes no final inspection (0,1,0,0).",
+    "case6": "Above the threshold, testing part 1 (1,0,0,0) overtakes no testing (0,0,0,0).",
+    "baseline_unchanged": "These are sensitivity checks only and do not change the baseline result."
+  }
+}

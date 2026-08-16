@@ -1,0 +1,52 @@
+{
+  "parts": [
+    {"id": "p1", "defect_rate": 0.10, "buy_cost": 2, "test_cost": 1},
+    {"id": "p2", "defect_rate": 0.10, "buy_cost": 8, "test_cost": 1},
+    {"id": "p3", "defect_rate": 0.10, "buy_cost": 12, "test_cost": 2},
+    {"id": "p4", "defect_rate": 0.10, "buy_cost": 2, "test_cost": 1},
+    {"id": "p5", "defect_rate": 0.10, "buy_cost": 8, "test_cost": 1},
+    {"id": "p6", "defect_rate": 0.10, "buy_cost": 12, "test_cost": 2},
+    {"id": "p7", "defect_rate": 0.10, "buy_cost": 8, "test_cost": 1},
+    {"id": "p8", "defect_rate": 0.10, "buy_cost": 12, "test_cost": 2}
+  ],
+  "products": [
+    {
+      "id": "s1",
+      "kind": "semi",
+      "children": ["p1", "p2", "p3"],
+      "defect_rate": 0.10,
+      "assemble_cost": 8,
+      "test_cost": 4,
+      "disassemble_cost": 6
+    },
+    {
+      "id": "s2",
+      "kind": "semi",
+      "children": ["p4", "p5", "p6"],
+      "defect_rate": 0.10,
+      "assemble_cost": 8,
+      "test_cost": 4,
+      "disassemble_cost": 6
+    },
+    {
+      "id": "s3",
+      "kind": "semi",
+      "children": ["p7", "p8"],
+      "defect_rate": 0.10,
+      "assemble_cost": 8,
+      "test_cost": 4,
+      "disassemble_cost": 6
+    },
+    {
+      "id": "final",
+      "kind": "final",
+      "children": ["s1", "s2", "s3"],
+      "defect_rate": 0.10,
+      "assemble_cost": 8,
+      "test_cost": 6,
+      "disassemble_cost": 10,
+      "price": 200,
+      "exchange_loss": 40
+    }
+  ]
+}

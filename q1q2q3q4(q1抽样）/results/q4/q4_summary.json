@@ -1,0 +1,17 @@
+{
+  "model_scope": "minimal Q4 baseline: Clopper-Pearson exact intervals plus robust expected-profit maximization",
+  "sample_size_scenarios": [
+    100,
+    368,
+    400,
+    1000
+  ],
+  "sample_data_assumption": "defective count is round(sample_size * nominal table defect rate); this is a modeling assumption, not problem-provided data",
+  "q2_result_rows": 24,
+  "q3_result_rows": 4,
+  "monotonicity_checks_passed": true,
+  "point_input_regression_checks_passed": true,
+  "monotonicity_failed_rows": [],
+  "point_input_regression_failed_rows": [],
+  "note": "Point-estimate runs use x/n after integer rounding and therefore may differ across sample sizes for reasons beyond interval width; point-input regression uses original table rates directly and is not produced by natural zero-width sample intervals."
+}

@@ -1,0 +1,13 @@
+﻿check,expected,got,abs_error,passed,reason,stderr,trials,compared,expected_compared,mismatch_count,max_cost_error,total_count,expected_total_count,feasible_count,expected_feasible_count
+closed_form_final_reuse_only,147.03703703703704,147.03703703703704,0.0,True,,,,,,,,,,,
+closed_form_final_reuse_only_cost_decomposition,147.03703703703704,147.03703703703704,0.0,True,,,,,,,,,,,
+closed_form_final_reuse_only_absorbing_probability,1.0,1.0,0.0,True,,,,,,,,,,,
+closed_form_final_and_semi_reuse,139.77777777777777,139.77777777777777,0.0,True,,,,,,,,,,,
+closed_form_final_and_semi_reuse_cost_decomposition,139.77777777777777,139.77777777777777,0.0,True,,,,,,,,,,,
+closed_form_final_and_semi_reuse_absorbing_probability,1.0,1.0,0.0,True,,,,,,,,,,,
+unknown_reuse_infeasible,False,False,,True,final disassembly may recycle unknown bad child,,,,,,,,,,
+scrap_reset_feasible,True,True,,True,,,,,,,,,,,
+mc_final_and_semi_reuse,139.77777777777777,139.83392,0.05614222222223475,True,,0.11385156122000191,50000,,,,,,,,
+mc_final_reuse_only,147.03703703703704,147.04486,0.00782296296296181,True,,0.14951092542668726,50000,,,,,,,,
+no_disassembly_matches_obsolete_baseline,,,,True,,,,4096,4096,0,5.684341886080802e-14,,,,
+independent_feasible_strategy_count,,,,True,,,,,,,,65536,65536,17060,17060

@@ -1,0 +1,40 @@
+{
+  "model_scope": "local two-sided sequential sampling attempt; fixed Q1 baseline and Q2-Q4 remain unchanged",
+  "initial_test": {
+    "log_lr_accept": -8.94,
+    "log_lr_reject": 4.4,
+    "validation": {
+      "p0_accept_prob": 0.09999808967444206,
+      "p0_reject_prob": 0.04995005869959668,
+      "pbad_reject_prob": 0.9003309985856286,
+      "p0_accept_prob_le_0.10": true,
+      "p0_reject_prob_le_0.05": true,
+      "pbad_reject_prob_ge_0.90": true
+    }
+  },
+  "selected_candidate": {
+    "log_lr_accept": -8.94,
+    "log_lr_reject": 4.32,
+    "score": 317.3302190650817,
+    "asn_p05": 262.670367007091,
+    "asn_p08": 350.9969421762361,
+    "asn_p10": 365.60002094184256,
+    "asn_p15": 286.9650272426837,
+    "asn_p20": 188.54103099731873,
+    "p0_accept_prob": 0.09999808967444206,
+    "p0_reject_prob": 0.04999503715313354,
+    "pbad_reject_prob": 0.9003696289622114,
+    "p0_accept_prob_le_0.10": true,
+    "p0_reject_prob_le_0.05": true,
+    "pbad_reject_prob_ge_0.90": true
+  },
+  "validation": {
+    "p0_accept_prob": 0.09999808967444206,
+    "p0_reject_prob": 0.04999503715313354,
+    "pbad_reject_prob": 0.9003696289622114,
+    "p0_accept_prob_le_0.10": true,
+    "p0_reject_prob_le_0.05": true,
+    "pbad_reject_prob_ge_0.90": true
+  },
+  "interpretation": "Kept only if validation passes and ASN improves around p=5%, 8%, and 10% without materially losing the p=15% and p=20% early rejection benefit."
+}

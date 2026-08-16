@@ -1,0 +1,7 @@
+{
+  "check_count": 469,
+  "passed_count": 469,
+  "failed_count": 0,
+  "failed_checks": [],
+  "note": "Monte Carlo checks use fixed random seeds and tolerance based on standard error."
+}

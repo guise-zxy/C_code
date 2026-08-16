@@ -1,0 +1,8 @@
+﻿scope,case_id,expected_strategy,got_strategy,actual_strategy,expected_profit,got_profit,actual_profit,abs_error,passed
+q2_point_input_regression,1,"(1,1,0,1)","(1,1,0,1)","(1,1,0,1)",18.111111111111107,18.111111111111107,18.111111111111107,0.0,True
+q2_point_input_regression,2,"(1,1,0,1)","(1,1,0,1)","(1,1,0,1)",12.0,12.0,12.0,0.0,True
+q2_point_input_regression,3,"(1,1,0,1)","(1,1,0,1)","(1,1,0,1)",15.444444444444443,15.444444444444443,15.444444444444443,0.0,True
+q2_point_input_regression,4,"(1,1,1,1)","(1,1,1,1)","(1,1,1,1)",14.75,14.75,14.75,0.0,True
+q2_point_input_regression,5,"(0,1,0,0)","(0,1,0,0)","(0,1,0,0)",11.987654320987659,11.987654320987659,11.987654320987659,0.0,True
+q2_point_input_regression,6,"(0,0,0,0)","(0,0,0,0)","(0,0,0,0)",21.6786703601108,21.6786703601108,21.6786703601108,0.0,True
+q3_point_input_regression,q3,test_p1;test_p2;test_p3;test_p4;test_p5;test_p6;test_p7;test_p8;test_s1;test_s2;test_s3;disassemble_s1;disassemble_s2;disassemble_s3;disassemble_final,test_p1;test_p2;test_p3;test_p4;test_p5;test_p6;test_p7;test_p8;test_s1;test_s2;test_s3;disassemble_s1;disassemble_s2;disassemble_s3;disassemble_final,test_p1;test_p2;test_p3;test_p4;test_p5;test_p6;test_p7;test_p8;test_s1;test_s2;test_s3;disassemble_s1;disassemble_s2;disassemble_s3;disassemble_final,60.22222222222223,60.22222222222223,60.22222222222223,0.0,True

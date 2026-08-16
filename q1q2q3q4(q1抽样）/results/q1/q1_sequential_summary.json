@@ -1,0 +1,42 @@
+{
+  "model_scope": "minimal exact sequential sampling baseline; Q1 fixed-sample main model remains frozen",
+  "p0": 0.1,
+  "p_bad": 0.15,
+  "n_max": 368,
+  "boundary_rule": {
+    "min_early_reject_n": 180,
+    "log_likelihood_ratio_reject_boundary": 4.4,
+    "final_accept_if_defects_le": 29,
+    "final_reject_if_defects_ge": 47,
+    "early_accept": false
+  },
+  "p0_result": {
+    "p": 0.1,
+    "accept_prob": 0.09939442989639073,
+    "reject_prob": 0.049950058709715826,
+    "undecided_prob": 0.8506555113939036,
+    "asn": 367.3160821865363,
+    "fixed_n": 368,
+    "asn_reduction": 0.6839178134637223,
+    "asn_reduction_rate": 0.0018584723191948974,
+    "probability_sum_error": 1.021405182655144e-14
+  },
+  "pbad_result": {
+    "p": 0.15,
+    "accept_prob": 2.6611703213631002e-05,
+    "reject_prob": 0.9003309986126603,
+    "undecided_prob": 0.09964238968411832,
+    "asn": 288.87713000094686,
+    "fixed_n": 368,
+    "asn_reduction": 79.12286999905314,
+    "asn_reduction_rate": 0.21500779891047048,
+    "probability_sum_error": 7.771561172376096e-15
+  },
+  "validation": {
+    "p0_reject_prob_le_0.05": true,
+    "p0_accept_prob_le_0.10": true,
+    "pbad_reject_prob_ge_0.90": true,
+    "max_probability_sum_error": 2.1094237467877974e-14
+  },
+  "interpretation": "Feasible under the three constraints. ASN reduction is material near p=15%, but negligible near p=10%; use as an improvement direction rather than replacing the frozen fixed-sample baseline."
+}
