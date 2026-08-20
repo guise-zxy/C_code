@@ -1,0 +1,57 @@
+:root{
+  --brand:#14b8a6; --brand-d:#0f766e; --ink:#1e293b; --muted:#64748b;
+  --bg:#f1f5f9; --card:#ffffff; --line:#e2e8f0; --danger:#ef4444;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0; min-height:100vh; background:var(--bg);
+  font-family:"Microsoft YaHei",system-ui,-apple-system,sans-serif; color:var(--ink);
+  display:flex; justify-content:center; padding:40px 16px;
+}
+.app{width:100%; max-width:560px;}
+.app__header{margin-bottom:20px;}
+.app__header h1{margin:0; font-size:30px; letter-spacing:1px;}
+.app__sub{margin:4px 0 0; color:var(--muted); font-size:13px;}
+
+.add{display:flex; gap:10px; margin-bottom:16px;}
+.add__input{
+  flex:1; padding:13px 16px; border:1px solid var(--line); border-radius:12px;
+  font-size:15px; outline:none; background:var(--card); transition:border-color .15s;
+}
+.add__input:focus{border-color:var(--brand);}
+.add__btn{
+  padding:0 22px; border:none; border-radius:12px; background:var(--brand);
+  color:#fff; font-size:15px; cursor:pointer; transition:background .15s;
+}
+.add__btn:hover{background:var(--brand-d);}
+
+.filters{display:flex; gap:8px; margin-bottom:14px;}
+.filters__btn{
+  padding:7px 16px; border:1px solid var(--line); border-radius:999px;
+  background:var(--card); color:var(--muted); cursor:pointer; font-size:13px;
+}
+.filters__btn.is-active{background:var(--brand); color:#fff; border-color:var(--brand);}
+
+.list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px;}
+.item{
+  display:flex; align-items:center; gap:12px; background:var(--card);
+  border:1px solid var(--line); border-radius:12px; padding:12px 14px;
+}
+.item__check{width:20px; height:20px; cursor:pointer; accent-color:var(--brand);}
+.item__title{flex:1; font-size:15px; word-break:break-all;}
+.item.is-done .item__title{color:var(--muted); text-decoration:line-through;}
+.item__time{font-size:11px; color:#94a3b8;}
+.item__del{
+  border:none; background:transparent; color:#cbd5e1; cursor:pointer;
+  font-size:18px; line-height:1; padding:4px;
+}
+.item__del:hover{color:var(--danger);}
+.empty{text-align:center; color:var(--muted); padding:32px 0; font-size:14px;}
+
+.app__footer{
+  display:flex; justify-content:space-between; align-items:center;
+  margin-top:16px; color:var(--muted); font-size:13px;
+}
+.link{border:none; background:transparent; color:var(--muted); cursor:pointer; font-size:13px;}
+.link:hover{color:var(--danger);}
+.error{color:var(--danger); font-size:13px; margin-top:10px;}

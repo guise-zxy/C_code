@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>课程学习追踪系统 · AI辅助编程</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="hd">
+      <h1>课程学习追踪系统</h1>
+      <p class="hd__sub">AI辅助编程 · 实验五 综合参考项目</p>
+    </header>
+
+    <section class="stats" id="stats"></section>
+
+    <section class="reminders" id="reminders" hidden></section>
+
+    <section class="panel">
+      <h2 class="panel__title">添加课程</h2>
+      <form id="course-form" class="cform">
+        <input id="c-name" class="cform__name" type="text" placeholder="课程名称，如：数据结构" maxlength="100" />
+        <input id="c-hours" class="cform__hours" type="number" min="0.5" step="0.5" placeholder="目标学时" />
+        <button class="btn" type="submit">添加</button>
+      </form>
+    </section>
+
+    <section class="panel">
+      <h2 class="panel__title">我的课程</h2>
+      <div id="courses" class="courses"></div>
+    </section>
+
+    <p id="error" class="error" hidden></p>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>

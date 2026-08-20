@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!-- 实验一 · 任务二：用自然语言让 AI 生成的“基础 Web 页面骨架”示例成果 -->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>我的第一个AI页面</title>
+  <style>
+    :root { --brand: #6366f1; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      font-family: "Microsoft YaHei", system-ui, sans-serif;
+      background: linear-gradient(135deg, #0f1535, #1b2350); color: #fff;
+    }
+    .card {
+      background: rgba(255,255,255,.06); backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,.12); border-radius: 18px;
+      padding: 48px 40px; text-align: center; max-width: 460px; width: 90%;
+    }
+    h1 { margin: 0 0 12px; font-size: 28px; }
+    p  { margin: 0 0 24px; color: #c7cee5; line-height: 1.6; }
+    button {
+      background: var(--brand); color: #fff; border: none; cursor: pointer;
+      padding: 12px 28px; border-radius: 999px; font-size: 15px;
+      transition: transform .1s ease, opacity .2s ease;
+    }
+    button:hover { opacity: .9; transform: translateY(-1px); }
+    #msg { margin-top: 18px; min-height: 22px; color: #a5b4fc; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>我的第一个AI页面</h1>
+    <p>欢迎来到 AI 辅助编程的世界！<br />这个页面骨架由自然语言提示词生成。</p>
+    <button id="btn">点我打个招呼</button>
+    <div id="msg"></div>
+  </main>
+
+  <script>
+    // 这段交互逻辑可以让 AI 帮你补全
+    const btn = document.getElementById("btn");
+    const msg = document.getElementById("msg");
+    let count = 0;
+    btn.addEventListener("click", () => {
+      count += 1;
+      msg.textContent = `你好，AI 编程！（已点击 ${count} 次）`;
+    });
+  </script>
+</body>
+</html>
