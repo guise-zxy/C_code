@@ -1,0 +1,541 @@
+/* 医院风主题：医疗蓝主色，Element 式观感（focus 光晕、白底描边次按钮、卡片竖条标题）。
+   全部颜色收口到 :root 变量，后续换肤只改这里。 */
+
+:root {
+  /* 品牌与主色 */
+  --c-navy: #14406e; /* 顶栏深医疗蓝、登录页渐变起点 */
+  --c-primary: #1a5cb8; /* 主操作蓝：主按钮、链接、选中态 */
+  --c-primary-hover: #2470d6;
+  --c-primary-bg: #e8f1fb; /* 主色浅底：提示条、选中态 */
+  --c-primary-bd: #bcd6ee; /* 主色浅边框 */
+
+  /* 背景与表面 */
+  --c-bg: #eef2f7; /* 页面浅灰蓝底 */
+  --c-card: #ffffff;
+
+  /* 文本 */
+  --c-text: #2c3a48;
+  --c-text-2: #5a6b7b; /* 次要文字、label、表头 */
+  --c-text-3: #8695a5; /* 弱提示、空态、免责小字 */
+
+  /* 边框 */
+  --c-border: #d9e2ec; /* 输入框边框 */
+  --c-divider: #edf1f5; /* 分隔线 */
+
+  /* 状态色（文字/浅底/浅边 三段式） */
+  --c-success: #1e7e46;
+  --c-success-bg: #e5f5ec;
+  --c-success-bd: #bfe5cc;
+  --c-warning: #9a6a12;
+  --c-warning-bg: #fff4e0;
+  --c-warning-bd: #f2ddb0;
+  --c-danger: #b03a3a;
+  --c-danger-bg: #fdecec;
+  --c-danger-bd: #f2c4c4;
+
+  /* 形状与阴影 */
+  --radius: 6px;
+  --radius-lg: 10px;
+  --shadow-card: 0 1px 3px rgba(20, 64, 110, 0.1);
+  --shadow-focus: 0 0 0 2px rgba(26, 92, 184, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', 'Microsoft YaHei', system-ui, sans-serif;
+  background: var(--c-bg);
+  color: var(--c-text);
+}
+
+/* ---------- 顶栏 ---------- */
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  padding: 0 24px;
+  background: var(--c-navy);
+  color: #fff;
+  box-shadow: var(--shadow-card);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.topbar .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.topbar .brand svg {
+  display: block;
+}
+
+.topbar .user-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+}
+
+.topbar .user-name {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.topbar .logout {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  color: #fff;
+  padding: 4px 14px;
+  font-size: 13px;
+  border-radius: var(--radius);
+}
+
+.topbar .logout:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.topbar nav a {
+  color: #cfe3f3;
+  text-decoration: none;
+  margin-left: 20px;
+  padding: 6px 10px;
+  border-radius: var(--radius);
+}
+
+.topbar nav a.router-link-active {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* ---------- 页面骨架 ---------- */
+
+.page {
+  max-width: 1080px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+h2 {
+  font-size: 17px;
+  margin: 0 0 14px;
+  padding-left: 10px;
+  border-left: 3px solid var(--c-primary);
+  line-height: 1.3;
+}
+
+.card {
+  background: var(--c-card);
+  border: 1px solid var(--c-divider);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 20px 24px;
+  margin-bottom: 16px;
+}
+
+/* ---------- 表单 ---------- */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.field label {
+  font-size: 13px;
+  color: var(--c-text-2);
+}
+
+select,
+input,
+textarea {
+  padding: 7px 10px;
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-family: inherit;
+  background: #fff;
+  color: var(--c-text);
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+
+select:focus,
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--c-primary);
+  box-shadow: var(--shadow-focus);
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.drug-row {
+  display: grid;
+  grid-template-columns: 2fr 1.4fr 2fr 0.7fr 0.8fr auto;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+/* ---------- 按钮 ---------- */
+
+button {
+  padding: 7px 16px;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 14px;
+  cursor: pointer;
+  background: var(--c-primary);
+  color: #fff;
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+}
+
+button:hover:not(:disabled) {
+  background: var(--c-primary-hover);
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+button.secondary {
+  background: #fff;
+  color: var(--c-text);
+  border: 1px solid var(--c-border);
+}
+
+button.secondary:hover:not(:disabled) {
+  background: #fff;
+  color: var(--c-primary);
+  border-color: var(--c-primary);
+}
+
+button.danger {
+  background: transparent;
+  color: var(--c-danger);
+  padding: 4px 8px;
+}
+
+button.danger:hover:not(:disabled) {
+  background: var(--c-danger-bg);
+}
+
+button.small {
+  padding: 3px 10px;
+  font-size: 12px;
+}
+
+/* ---------- 横幅与徽章 ---------- */
+
+.banner {
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.banner.error {
+  background: var(--c-danger-bg);
+  color: var(--c-danger);
+  border: 1px solid var(--c-danger-bd);
+}
+
+.banner.success {
+  background: var(--c-success-bg);
+  color: var(--c-success);
+  border: 1px solid var(--c-success-bd);
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge.draft {
+  background: var(--c-warning-bg);
+  color: var(--c-warning);
+}
+
+.badge.published {
+  background: var(--c-success-bg);
+  color: var(--c-success);
+}
+
+/* ---------- 处方卡片与表格 ---------- */
+
+.rx-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.rx-title {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.rx-meta {
+  font-size: 13px;
+  color: var(--c-text-2);
+  margin: 2px 0 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin: 8px 0;
+}
+
+th,
+td {
+  border-bottom: 1px solid var(--c-divider);
+  padding: 8px 10px;
+  text-align: left;
+}
+
+th {
+  color: var(--c-text-2);
+  font-weight: 600;
+  background: var(--c-bg);
+}
+
+tbody tr:hover {
+  background: var(--c-primary-bg);
+}
+
+.follow-up {
+  background: var(--c-primary-bg);
+  border: 1px solid var(--c-primary-bd);
+  color: var(--c-primary);
+  border-radius: var(--radius);
+  padding: 8px 12px;
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+.empty {
+  color: var(--c-text-3);
+  text-align: center;
+  padding: 28px 0;
+}
+
+/* ---------- AI 面板（虚线边框 + 浅蓝底，视觉上区别于"真实数据"的实线卡片） ---------- */
+
+.ai-panel {
+  border: 1px dashed var(--c-primary-bd);
+  background: #f8fbfe;
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  margin: 10px 0;
+}
+
+.ai-panel h3 {
+  font-size: 14px;
+  margin: 0 0 8px;
+  color: var(--c-primary);
+}
+
+.ai-actions {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.ai-suggestion {
+  display: grid;
+  grid-template-columns: 1.8fr 1.2fr 1.8fr 0.5fr 0.7fr auto;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--c-divider);
+  font-size: 13px;
+}
+
+.ai-suggestion .name {
+  font-weight: 600;
+}
+
+.ai-reason {
+  grid-column: 1 / -1;
+  font-size: 12px;
+  color: var(--c-text-2);
+}
+
+.ai-list {
+  margin: 4px 0 10px;
+  padding-left: 18px;
+  font-size: 13px;
+}
+
+.ai-list li {
+  margin: 4px 0;
+}
+
+.ai-follow {
+  background: var(--c-primary-bg);
+  border: 1px solid var(--c-primary-bd);
+  color: var(--c-primary);
+  border-radius: var(--radius);
+  padding: 8px 12px;
+  font-size: 13px;
+  margin: 6px 0;
+}
+
+.ai-note {
+  font-size: 12px;
+  color: var(--c-text-3);
+  margin-top: 8px;
+}
+
+.ai-error {
+  font-size: 13px;
+  color: var(--c-danger);
+  margin-top: 6px;
+}
+
+/* ---------- 登录页 ---------- */
+
+.login-wrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, var(--c-navy) 0%, var(--c-primary) 100%);
+  padding: 24px;
+}
+
+.login-card {
+  width: 400px;
+  max-width: 100%;
+  background: #fff;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 30px rgba(10, 30, 60, 0.25);
+  padding: 32px 36px;
+}
+
+.login-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 22px;
+  text-align: center;
+}
+
+.login-brand .title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--c-navy);
+}
+
+.login-brand .subtitle {
+  font-size: 13px;
+  color: var(--c-text-3);
+}
+
+.login-roles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.role-card {
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+  padding: 14px 8px;
+  text-align: center;
+  cursor: pointer;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--c-text-2);
+  transition: border-color 0.15s, background-color 0.15s, color 0.15s;
+}
+
+.role-card .role-icon {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.role-card.active {
+  border-color: var(--c-primary);
+  background: var(--c-primary-bg);
+  color: var(--c-primary);
+  font-weight: 600;
+}
+
+.login-hint {
+  font-size: 13px;
+  color: var(--c-text-3);
+  margin: 0 0 10px;
+}
+
+.login-users {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 18px;
+}
+
+.user-chip {
+  border: 1px solid var(--c-border);
+  border-radius: 999px;
+  padding: 6px 18px;
+  font-size: 14px;
+  background: #fff;
+  color: var(--c-text);
+  cursor: pointer;
+  transition: border-color 0.15s, background-color 0.15s, color 0.15s;
+}
+
+/* 人员胶囊是按钮元素，需覆盖全局 button:hover 的主色底 */
+.user-chip:hover:not(:disabled) {
+  background: #fff;
+  border-color: var(--c-primary);
+  color: var(--c-primary);
+}
+
+.user-chip.active {
+  border-color: var(--c-primary);
+  background: var(--c-primary-bg);
+  color: var(--c-primary);
+  font-weight: 600;
+}
+
+.user-chip.active:hover:not(:disabled) {
+  background: var(--c-primary-bg);
+}
+
+.login-btn {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 15px;
+  margin-top: 4px;
+}
